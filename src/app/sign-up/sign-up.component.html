@@ -1,1 +1,30 @@
-<p>sign-up works!</p>
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <label for="userId">ID:</label>
+  <input id="userId" type="text" formControlName="userId" />
+  <label for="pw">Password:</label>
+  <input id="pw" type="text" formControlName="firstName" />
+  <label for="pw">First Name:</label>
+  <input id="pw" type="text" formControlName="lastName" />
+  <label for="pw">Last Name:</label>
+  <input id="pw" type="text" formControlName="password" />
+
+  <div class="address" formGroupName="address">
+    <h4>Address</h4>
+    <label for="street">Street: </label>
+    <input id="street" type="text" formControlName="street" />
+
+    <label for="city">City: </label>
+    <input id="city" type="text" formControlName="city" />
+
+    <label for="state">State: </label>
+    <input id="state" type="text" formControlName="state" />
+
+    <label for="zip">Zip Code: </label>
+    <input id="zip" type="text" formControlName="zip" />
+  </div>
+
+  <p>You already have an account? <a routerLink="/signIn">Click</a></p>
+  <button type="submit" [disabled]="!signUpForm.valid">Sign up</button>
+</form>
+
+<p>Form status: {{ signUpForm.status }}</p>
