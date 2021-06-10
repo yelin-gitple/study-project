@@ -13,4 +13,9 @@ export class BlogListService {
     const blogList = of(BLOG_LIST);
     return blogList;
   }
+
+  getBlogItem(id: number): Observable<BLOG_ITEM> {
+    const blogItem = BLOG_LIST.find((item) => item.id === id)!;
+    return of(blogItem);
+  }
 }

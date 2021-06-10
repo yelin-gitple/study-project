@@ -1,3 +1,12 @@
 <ul class="blogList">
-    <li *ngFor="let blogItem of blogList">{{blogItem.title}}</li>
+  <li *ngFor="let blogItem of blogList">
+    <a routerLink="/detail/{{blogItem.id}}">
+      <span class="blogTitle">
+        {{ blogItem.title }}
+      </span>
+      <span class="blogDate">
+        {{ blogItem.createdAt }}
+      </span>
+    </a>
+  </li>
 </ul>

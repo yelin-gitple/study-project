@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
+import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { BlogListComponent } from './blog-list/blog-list.component';
     HeaderComponent,
     SignInComponent,
     SignUpComponent,
-    BlogListComponent
+    BlogListComponent,
+    BlogDetailComponent
   ],
   imports: [
     BrowserModule,

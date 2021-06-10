@@ -1,0 +1,8 @@
+<div *ngIf="blogItem" class="blogItem">
+  <strong>{{ blogItem.id }}</strong>
+  <h3>{{ blogItem.title }}</h3>
+  <h4>{{ blogItem.username }}</h4>
+  <p class="content">{{ blogItem.body }}</p>
+  <span class="date">{{ blogItem.createdAt }}</span>
+</div>
+<button (click)="goToBack()">BACK</button>
