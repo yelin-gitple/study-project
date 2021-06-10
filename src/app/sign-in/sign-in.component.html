@@ -1,9 +1,11 @@
-<form>
+<form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
   <label for="userId">ID:</label>
-  <input id="userId" type="text" />
+  <input id="userId" type="text" formControlName="userId" />
   <label for="pw">Password:</label>
-  <input id="pw" type="text" />
+  <input id="pw" type="text" formControlName="password" />
 
   <p>You don't have a account? <a routerLink="/signUp">Click</a></p>
-  <button type="submit">Sign in</button>
+  <button type="submit" [disabled]="!signInForm.valid">Sign in</button>
 </form>
+
+<p>Form status: {{ signInForm.status }}</p>
