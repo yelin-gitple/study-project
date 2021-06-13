@@ -4,6 +4,8 @@
   <label for="pw">Password:</label>
   <input id="pw" type="text" formControlName="password" />
 
+  <input class="form-control" />
+
   <p>You don't have a account? <a routerLink="/signUp">Click</a></p>
   <button type="submit" [disabled]="!signInForm.valid">Sign in</button>
 </form>
