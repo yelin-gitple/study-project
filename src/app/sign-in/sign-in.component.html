@@ -1,3 +1,4 @@
+<h1>Sign In</h1>
 <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
   <label for="userId">ID:</label>
   <input id="userId" type="text" formControlName="userId" />
@@ -5,7 +6,7 @@
   <input id="pw" type="text" formControlName="password" />
 
   <p>You don't have a account? <a routerLink="/signUp">Click</a></p>
-  <button type="submit" [disabled]="!signInForm.valid">Sign in</button>
+  <button type="submit" [disabled]="!signInForm.valid">Sign In</button>
 </form>
 
 <p>Form status: {{ signInForm.status }}</p>

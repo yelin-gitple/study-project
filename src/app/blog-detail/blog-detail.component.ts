@@ -20,7 +20,6 @@ export class BlogDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBlogItem();
-    console.log(this.blogItem);
   }
 
   getBlogItem(): void {

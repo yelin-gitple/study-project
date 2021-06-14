@@ -1,0 +1,14 @@
+<div class="newPost">
+  <h3>Register New Post</h3>
+  <form [formGroup]="newPostForm" (ngSubmit)="onSubmit()">
+    <div class="titleArea">
+      <label for="newTitle">Title: </label>
+      <input id="newTitle" type="text" formControlName="title"/>
+    </div>
+    <div class="contentArea">
+      <label for="newContent">Content: </label>
+      <textarea id="newContent" formControlName="content"></textarea>
+    </div>
+    <button>Register</button>
+  </form>
+</div>

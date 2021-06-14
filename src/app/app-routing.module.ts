@@ -1,3 +1,4 @@
+import { NewPostComponent } from './new-post/new-post.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'signIn', component: SignInComponent },
   { path: 'signUp', component: SignUpComponent },
   { path: 'detail/:id', component: BlogDetailComponent },
+  { path: 'newPost', component: NewPostComponent },
 ];
 
 @NgModule({
