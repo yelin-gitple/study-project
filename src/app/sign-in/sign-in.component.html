@@ -1,14 +1,28 @@
-<h1>Sign In</h1>
-<form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
-  <label for="userId">ID:</label>
-  <input id="userId" type="text" formControlName="userId" />
-  <label for="pw">Password:</label>
-  <input id="pw" type="text" formControlName="password" />
+<div class="formGroup">
+  <h1>Sign In</h1>
+  <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+    <div class="formInput">
+      <label for="userId">ID:</label>
+      <input
+        id="userId"
+        class="form-control"
+        type="text"
+        formControlName="userId"
+      />
+    </div>
+    <div class="formInput">
+      <label for="pw">Password:</label>
+      <input
+        id="pw"
+        class="form-control"
+        type="text"
+        formControlName="password"
+      />
+    </div>
 
-  <input class="form-control" />
+    <p class="formText">You don't have a account? <a routerLink="/signUp">Click</a></p>
+    <button class="formBtn"  type="submit" [disabled]="!signInForm.valid">Sign In</button>
+  </form>
+</div>
 
-  <p>You don't have a account? <a routerLink="/signUp">Click</a></p>
-  <button type="submit" [disabled]="!signInForm.valid">Sign In</button>
-</form>
-
-<p>Form status: {{ signInForm.status }}</p>
+<!-- <p>Form status: {{ signInForm.status }}</p> -->

@@ -1,0 +1,37 @@
+.detail {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.blogItem {
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.blogId {
+  text-align: right;
+  color: #aaa;
+}
+
+.username {
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-align: right;
+  color: #aaa;
+}
+
+.backBtn {
+  position: absolute;
+  right: 5%;
+  margin-top: 30px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size:0.7rem;
+  background-color: skyblue;
+  cursor:pointer;
+}
+
+.backBtn:hover{
+    opacity: 0.7;
+}

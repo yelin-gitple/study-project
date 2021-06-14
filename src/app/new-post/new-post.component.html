@@ -3,12 +3,12 @@
   <form [formGroup]="newPostForm" (ngSubmit)="onSubmit()">
     <div class="titleArea">
       <label for="newTitle">Title: </label>
-      <input id="newTitle" type="text" formControlName="title"/>
+      <input id="newTitle" class="form-control" type="text" formControlName="title"/>
     </div>
     <div class="contentArea">
       <label for="newContent">Content: </label>
-      <textarea id="newContent" formControlName="content"></textarea>
+      <textarea id="newContent" class="form-control" formControlName="content"></textarea>
     </div>
-    <button>Register</button>
+    <button class="registerBtn">Register</button>
   </form>
 </div>

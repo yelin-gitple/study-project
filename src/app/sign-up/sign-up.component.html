@@ -1,30 +1,79 @@
-<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-  <label for="userId">ID:</label>
-  <input id="userId" type="text" formControlName="userId" />
-  <label for="pw">Password:</label>
-  <input id="pw" type="text" formControlName="firstName" />
-  <label for="pw">First Name:</label>
-  <input id="pw" type="text" formControlName="lastName" />
-  <label for="pw">Last Name:</label>
-  <input id="pw" type="text" formControlName="password" />
+<div class="formGroup">
+  <h1>Sign Up</h1>
 
-  <div class="address" formGroupName="address">
-    <h4>Address</h4>
-    <label for="street">Street: </label>
-    <input id="street" type="text" formControlName="street" />
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <div class="formInput">
+      <label for="userId">ID:</label>
+      <input
+        id="userId"
+        class="form-control"
+        type="text"
+        formControlName="userId"
+      />
+    </div>
+    <div class="formInput">
+      <label for="pw">Password:</label>
+      <input
+        id="pw"
+        class="form-control"
+        type="text"
+        formControlName="firstName"
+      />
+    </div>
+    <div class="formInput">
+      <label for="pw">First Name:</label>
+      <input
+        id="pw"
+        class="form-control"
+        type="text"
+        formControlName="lastName"
+      />
+    </div>
+    <div class="formInput">
+      <label for="pw">Last Name:</label>
+      <input
+        id="pw"
+        class="form-control"
+        type="text"
+        formControlName="password"
+      />
+    </div>
+    <!-- <div class="address" formGroupName="address">
+      <h4>Address</h4>
+      <label for="street">Street: </label>
+      <input
+        id="street"
+        class="form-control"
+        type="text"
+        formControlName="street"
+      />
 
-    <label for="city">City: </label>
-    <input id="city" type="text" formControlName="city" />
+      <label for="city">City: </label>
+      <input
+        id="city"
+        class="form-control"
+        type="text"
+        formControlName="city"
+      />
 
-    <label for="state">State: </label>
-    <input id="state" type="text" formControlName="state" />
+      <label for="state">State: </label>
+      <input
+        id="state"
+        class="form-control"
+        type="text"
+        formControlName="state"
+      />
 
-    <label for="zip">Zip Code: </label>
-    <input id="zip" type="text" formControlName="zip" />
-  </div>
+      <label for="zip">Zip Code: </label>
+      <input id="zip" class="form-control" type="text" formControlName="zip" />
+    </div> -->
 
-  <p>You already have an account? <a routerLink="/signIn">Click</a></p>
-  <button type="submit" [disabled]="!signUpForm.valid">Sign up</button>
-</form>
-
-<p>Form status: {{ signUpForm.status }}</p>
+    <p class="formText">
+      You already have an account? <a routerLink="/signIn">Click</a>
+    </p>
+    <button class="formBtn" type="submit" [disabled]="!signUpForm.valid">
+      Sign up
+    </button>
+  </form>
+</div>
+<!-- <p>Form status: {{ signUpForm.status }}</p> -->
