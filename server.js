@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, "dist/blog-study-project")));
 // });
 
 //set port
-const port = process.env.PORT || "3000";
+const port = process.env.PORT || "3800";
 app.set("port", port);
 
 //create the HTTP server
