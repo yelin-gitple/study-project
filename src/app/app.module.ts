@@ -19,17 +19,14 @@ import { NewPostComponent } from './new-post/new-post.component';
     SignUpComponent,
     BlogListComponent,
     BlogDetailComponent,
-<<<<<<< HEAD
     NewPostComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
-=======
->>>>>>> 22c1e74260a0f601aaf4d0e0651c1747a5424860
+    ReactiveFormsModule,
+    FormsModule
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
