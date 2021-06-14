@@ -1,5 +1,5 @@
 <ul class="blogList">
-  <li *ngFor="let blogItem of blogList">
+  <li class="blogListItem" *ngFor="let blogItem of blogList">
     <a routerLink="/detail/{{blogItem.id}}">
       <span class="blogTitle">
         {{ blogItem.title }}
