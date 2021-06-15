@@ -69,6 +69,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options":{
+            "proxyConfig":"src/proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "blog-study-project:build:production"
@@ -79,6 +82,7 @@
           },
           "defaultConfiguration": "development"
         },
+
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
@@ -91,6 +95,7 @@
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
+
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",

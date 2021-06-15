@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const http = require("http");
+const blogRouter = require("./blog");
 
 const app = express();
 
@@ -11,14 +12,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "dist/blog-study-project")));
 
 //main routing
-//app.use("/api", api);
+app.use("/api/blogList", blogRouter);
 
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "dist/blog-study-project/index.html"));
 // });
 
 //set port
-const port = process.env.PORT || "3800";
+const port = process.env.PORT || "3000";
 app.set("port", port);
 
 //create the HTTP server
