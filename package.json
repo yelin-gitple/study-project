@@ -21,6 +21,7 @@
     "express": "^4.17.1",
     "express-generator": "^4.16.1",
     "global": "^4.4.0",
+    "mongoose": "^5.12.13",
     "morgan": "^1.10.0",
     "ngx-bootstrap": "^6.2.0",
     "rxjs": "~6.6.0",

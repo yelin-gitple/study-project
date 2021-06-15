@@ -15,6 +15,7 @@ export class BlogListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBlogList();
+    console.log(this.getBlogList());
   }
 
   getBlogList() {

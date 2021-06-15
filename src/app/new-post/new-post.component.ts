@@ -1,5 +1,6 @@
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { BlogListService } from '../blog-list.service';
 
 @Component({
   selector: 'app-new-post',
@@ -12,12 +13,21 @@ export class NewPostComponent implements OnInit {
     content: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private blogListService: BlogListService
+  ) {}
 
   ngOnInit(): void {}
 
-  onSubmit(){
-    // TO DO: 
-    console.warn(this.newPostForm.value)
+  onSubmit() {
+    // TO DO:
+    //console.warn(this.newPostForm.value);
+  }
+
+  add() {
+    this.blogListService.addPost(this.newPostForm.value).subscribe(blog => {
+      console.log(blog)
+    })
   }
 }

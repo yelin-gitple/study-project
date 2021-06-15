@@ -1,7 +1,22 @@
 const express = require("express");
 const path = require("path");
 const http = require("http");
-const blogRouter = require("./blog");
+const blogRouter = require("./blogList");
+
+const mongoose = require("mongoose");
+
+const config = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+};
+
+mongoose
+  .connect(
+    "mongodb://root:mongodb@localhost:27017/gitple?authSource=admin",
+    config
+  )
+  .then(() => console.log("mongo DB connected!"))
+  .catch(console.log("mongo DB disconnected"));
 
 const app = express();
 
@@ -13,10 +28,6 @@ app.use(express.static(path.join(__dirname, "dist/blog-study-project")));
 
 //main routing
 app.use("/api/blogList", blogRouter);
-
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "dist/blog-study-project/index.html"));
-// });
 
 //set port
 const port = process.env.PORT || "3000";
