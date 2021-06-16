@@ -1,4 +1,3 @@
-const { ɵCompiler_compileModuleSync__POST_R3__ } = require("@angular/core");
 const express = require("express");
 const mongoose = require("mongoose");
 const ObjectId = mongoose.Types.ObjectId;
@@ -35,6 +34,20 @@ router.post("/", async (req, res) => {
     res.json(blogItem);
   } catch (error) {
     res.status(500).json({ error });
+  }
+});
+
+/* DELETE */
+router.delete("/detail/:id", (req, res) => {
+  try {
+    const id_obj = ObjectId(req.params.id);
+    BLOG.deleteOne({ _id: id_obj }).then((result) => {
+      res.status(200).json({
+        message: "Delete success",
+      });
+    });
+  } catch (error) {
+    res.status(204).end();
   }
 });
 

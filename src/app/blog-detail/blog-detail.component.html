@@ -2,9 +2,14 @@
   <div *ngIf="blogItem" class="blogItem">
     <p class="blogId">{{ blogItem?._id }}</p>
     <h3>{{ blogItem?.title }}</h3>
-    <p class="content">{{ blogItem?.body }}</p>
-    <h4 class="username">by {{ blogItem?.username }}</h4>
+    <p class="content ">{{ blogItem?.body }}</p>
+    <h4 class="username">written by {{ blogItem?.username }}</h4>
     <span class="date">Date {{ blogItem?.createdAt }}</span>
+    <div class="edit-deleteBtn">
+      <button class="editBtn">Edit</button>
+      <button class="deleteBtn" (click)="delete(blogItem)">Delete</button>
+    </div>
   </div>
+
   <button class="backBtn" (click)="goToBack()">BACK</button>
 </div>

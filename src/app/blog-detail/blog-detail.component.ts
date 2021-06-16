@@ -24,10 +24,15 @@ export class BlogDetailComponent implements OnInit {
 
   getBlogItem(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log(this.route.snapshot.paramMap)
     this.blogListService
       .getBlogItem(id)
       .subscribe((item) => (this.blogItem = item));
+  }
+
+  delete(blogItem: BLOG_ITEM) {
+    this.blogListService.deleteBlogItem(blogItem._id).subscribe(() => {
+      this.goToBack();
+    });
   }
 
   goToBack(): void {
