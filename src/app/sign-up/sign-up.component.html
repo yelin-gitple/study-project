@@ -71,7 +71,11 @@
     <p class="formText">
       You already have an account? <a routerLink="/signIn">Click</a>
     </p>
-    <button class="formBtn" type="submit" [disabled]="!signUpForm.valid">
+    <button
+      class="formBtn"
+      type="submit"
+      [disabled]="!signUpForm.valid"
+    >
       Sign up
     </button>
   </form>

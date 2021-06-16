@@ -1,8 +1,9 @@
 const express = require("express");
 const path = require("path");
 const http = require("http");
-const cors = require('cors')
-const blogRouter = require("./blogList");
+const cors = require("cors");
+const blogRouter = require("./routes/blogList");
+const userRouter = require("./routes/users");
 
 const mongoose = require("mongoose");
 
@@ -22,8 +23,9 @@ mongoose
 const app = express();
 
 //CORS
-app.use(cors())
+app.use(cors());
 
+//Bodyparser
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -32,6 +34,7 @@ app.use(express.static(path.join(__dirname, "dist/blog-study-project")));
 
 //main routing
 app.use("/api/blogList", blogRouter);
+app.use("/users", userRouter);
 
 //set port
 const port = process.env.PORT || "3000";

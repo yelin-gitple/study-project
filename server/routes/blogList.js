@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const ObjectId = mongoose.Types.ObjectId;
 const router = express.Router();
 
-const BLOG = require("./models/blog");
+const BLOG = require("../models/blog");
 
 /* GET /api/blogList */
 router.get("/", async (req, res) => {
