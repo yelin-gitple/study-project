@@ -1,6 +1,7 @@
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { BlogListService } from '../blog-list.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-new-post',
@@ -15,7 +16,8 @@ export class NewPostComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private blogListService: BlogListService
+    private blogListService: BlogListService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {}
@@ -25,9 +27,13 @@ export class NewPostComponent implements OnInit {
     //console.warn(this.newPostForm.value);
   }
 
+  goBack(): void {
+    this.location.back();
+  }
+
   add() {
-    this.blogListService.addPost(this.newPostForm.value).subscribe(blog => {
-      console.log(blog)
-    })
+    this.blogListService
+      .addPost(this.newPostForm.value)
+      .subscribe(() => this.goBack());
   }
 }

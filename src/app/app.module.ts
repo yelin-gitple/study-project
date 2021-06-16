@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,8 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
     NewPostComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    RouterModule,
+    BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,

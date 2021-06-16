@@ -1,9 +1,9 @@
 import { BLOG_ITEM } from './content';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { BLOG_LIST } from './mock-contents';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
+
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -17,20 +17,23 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class BlogListService {
-  private blogListUrl = 'http://localhost:3000';
+  private blogListUrl = 'http://localhost:3000/api/blogList';
 
   constructor(private http: HttpClient) {}
 
   getBlogList(): Observable<BLOG_ITEM[]> {
-    console.log(this.http);
     return this.http
-      .get<BLOG_ITEM[]>(`${this.blogListUrl}/api/blogList`, httpOptions)
+      .get<BLOG_ITEM[]>(`${this.blogListUrl}`, httpOptions)
       .pipe(catchError(this.handleError<BLOG_ITEM[]>('getBlogList', [])));
   }
 
-  getBlogItem(id: number): Observable<BLOG_ITEM> {
-    const blogItem = BLOG_LIST.find((item) => item.id === id)!;
-    return of(blogItem);
+  getBlogItem(id: any): Observable<BLOG_ITEM> {
+    const url = `${this.blogListUrl}/detail/${id}`;
+    console.log(id,url)
+    
+    return this.http.get<BLOG_ITEM>(url).pipe(
+      catchError(this.handleError<BLOG_ITEM>(`getBlogItem id=${id}`))
+    )
   }
 
   addPost(blog: BLOG_ITEM): Observable<BLOG_ITEM> {

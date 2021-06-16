@@ -1,6 +1,6 @@
-<ul class="blogList">
+<ul class="blogList" *ngIf="blogList.length">
   <li class="blogListItem" *ngFor="let blogItem of blogList">
-    <a routerLink="/detail/{{blogItem.id}}">
+      <a routerLink="/detail/{{blogItem._id}}">
       <span class="blogTitle">
         {{ blogItem.title }}
       </span>

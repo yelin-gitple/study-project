@@ -23,7 +23,8 @@ export class BlogDetailComponent implements OnInit {
   }
 
   getBlogItem(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = this.route.snapshot.paramMap.get('id');
+    console.log(this.route.snapshot.paramMap)
     this.blogListService
       .getBlogItem(id)
       .subscribe((item) => (this.blogItem = item));
