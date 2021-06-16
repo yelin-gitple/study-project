@@ -5,7 +5,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { ObjectId } from 'mongoose';
 
-
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -38,16 +37,24 @@ export class BlogListService {
 
   addPost(blog: BLOG_ITEM): Observable<BLOG_ITEM> {
     return this.http
-      .post<BLOG_ITEM>(`${this.blogListUrl}/api/blogList`, blog)
+      .post<BLOG_ITEM>(`${this.blogListUrl}`, blog)
       .pipe(catchError(this.handleError<BLOG_ITEM>('addPost')));
+  }
+
+  updateBlogItem(blogItem: BLOG_ITEM): Observable<BLOG_ITEM> {
+    const url = `${this.blogListUrl}/detail/${blogItem._id}`;
+
+    return this.http
+      .put<BLOG_ITEM>(url, blogItem)
+      .pipe(catchError(this.handleError<BLOG_ITEM>('updateBlogItem')));
   }
 
   deleteBlogItem(id: ObjectId): Observable<BLOG_ITEM> {
     const url = `${this.blogListUrl}/detail/${id}`;
-    console.log(url)
-    return this.http.delete<BLOG_ITEM>(url).pipe(
-      catchError(this.handleError<BLOG_ITEM>('deleteBlogItem'))
-    );
+
+    return this.http
+      .delete<BLOG_ITEM>(url)
+      .pipe(catchError(this.handleError<BLOG_ITEM>('deleteBlogItem')));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

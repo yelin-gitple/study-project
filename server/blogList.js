@@ -37,6 +37,16 @@ router.post("/", async (req, res) => {
   }
 });
 
+/* PUT */
+router.put("/detail/:id", async (req, res) => {
+  try {
+    const id_obj = ObjectId(req.params.id);
+    await BLOG.updateOne({ _id: id_obj }, req.body);
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+});
+
 /* DELETE */
 router.delete("/detail/:id", (req, res) => {
   try {

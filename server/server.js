@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const http = require("http");
+const cors = require('cors')
 const blogRouter = require("./blogList");
 
 const mongoose = require("mongoose");
@@ -19,6 +20,9 @@ mongoose
   .catch(console.log("mongo DB disconnected"));
 
 const app = express();
+
+//CORS
+app.use(cors())
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

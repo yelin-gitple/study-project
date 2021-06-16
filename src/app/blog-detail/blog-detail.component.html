@@ -1,15 +1,35 @@
 <div class="detail">
-  <div *ngIf="blogItem" class="blogItem">
+  <div *ngIf="!editing && blogItem" class="blogItem">
     <p class="blogId">{{ blogItem?._id }}</p>
     <h3>{{ blogItem?.title }}</h3>
-    <p class="content ">{{ blogItem?.body }}</p>
+    <p class="content">{{ blogItem?.body }}</p>
     <h4 class="username">written by {{ blogItem?.username }}</h4>
     <span class="date">Date {{ blogItem?.createdAt }}</span>
     <div class="edit-deleteBtn">
-      <button class="editBtn">Edit</button>
+      <button class="editBtn" (click)="toggleEditing()">Edit</button>
       <button class="deleteBtn" (click)="delete(blogItem)">Delete</button>
     </div>
   </div>
-
+  <form
+    *ngIf="editing && blogItem"
+    class="editForm"
+    [formGroup]="editForm"
+    (ngSubmit)="handleUpdate($event)"
+  >
+    <label for="blogTitle">Title:</label>
+    <input
+      class="form-control"
+      type="text"
+      value="{{ blogItem.title }}"
+      formControlName="newTitle"
+    />
+    <label for="blogTitle">Content:</label>
+    <textarea class="form-control" rows="10" formControlName="newContent">{{
+      blogItem.body
+    }}</textarea>
+    <button type="submit" class="updateBtn" >
+      Update
+    </button>
+  </form>
   <button class="backBtn" (click)="goToBack()">BACK</button>
 </div>

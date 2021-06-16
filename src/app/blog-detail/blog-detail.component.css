@@ -1,12 +1,16 @@
 .detail {
+  min-width: 500px;
   width: 90%;
   margin: 0 auto;
-}
-
-.blogItem {
   padding: 30px;
   border-radius: 10px;
   background-color: #fff;
+}
+
+/* blogItem */
+.blogItem {
+  /* padding: 30px;
+  border-radius: 10px; */
 }
 
 .blogId {
@@ -21,31 +25,26 @@
   color: #aaa;
 }
 
-/* edit-deleteBtn */
+/* blogItem / edit-deleteBtn */
 .edit-deleteBtn {
-
   display: flex;
   justify-content: flex-end;
 }
 
 .edit-deleteBtn > button {
   padding: 10px;
-  margin-top:10px;
-  margin-left:10px;
+  margin-top: 10px;
+  margin-left: 10px;
   border-radius: 5px;
   font-size: 0.7rem;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.edit-deleteBtn > button:hover{
+.edit-deleteBtn > button:hover {
   opacity: 0.7;
 }
 
-.edit-deleteBtn > .editBtn {
-
-}
-
-/* backBtn */
+/* blogItem / backBtn */
 .backBtn {
   position: absolute;
   right: 5%;
@@ -58,5 +57,20 @@
 }
 
 .backBtn:hover {
+  opacity: 0.7;
+}
+
+/* editForm */
+.updateBtn {
+  display: block;
+  width: 100px;
+  margin: 30px auto 0;
+  padding: 10px 0;
+  border-radius: 5px;
+  background-color: skyblue;
+  cursor:pointer;
+}
+
+.updateBtn:hover{
   opacity: 0.7;
 }
