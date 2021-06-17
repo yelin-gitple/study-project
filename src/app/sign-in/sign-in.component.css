@@ -1,12 +1,14 @@
 .formGroup {
   min-width: 300px;
+  width: 30%;
+  margin: 0 auto;
   padding: 30px;
   border-radius: 10px;
   background-color: #fff;
 }
 
-.formGroup > h1{
-    font-size:1.5rem;
+.formGroup > h1 {
+  font-size: 1.5rem;
 }
 
 .formInput {
@@ -20,7 +22,7 @@
 .formText {
   padding-top: 20px;
   font-size: 0.8rem;
-  text-align:center;
+  text-align: center;
 }
 
 .formBtn {

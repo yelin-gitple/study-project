@@ -1,20 +1,100 @@
-const {
-  RESOURCE_CACHE_PROVIDER,
-} = require("@angular/platform-browser-dynamic");
-const { RSA_NO_PADDING } = require("constants");
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcryptjs");
+const USER = require("../models/user");
+const jwt = require("jsonwebtoken");
+const key = require("../passport/key");
+const passport = require("passport");
 
-//Login Page
-router.get("/signIn", (req, res) => res.send("signIn"));
+//Get current user
+router.get(
+  "/current",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    res.json({
+      //id: req.user.id,
+      userId: req.user.userId,
+      password: req.user.password,
+      firstName: req.user.firstName,
+      lastName: req.user.lastName,
+    });
+  }
+);
 
 //Register Page
-router.get("/signUp", (req, res) => res.send("signUp"));
+//router.get("/signUp", (req, res) => res.send("signUp"));
 
 //Register Handle
-router.post("/signUp", (req, res) => {
-  console.log(req.body);
-  res.send("Hello");
+router.post("/signUp", async (req, res) => {
+  await USER.findOne({ userId: req.body.userId }).then((user) => {
+    if (user) {
+      return res.status(400).json({
+        userId: "해당 이메일을 가진 사용자가 존재합니다.",
+      });
+    } else {
+      const newUser = new USER({
+        userId: req.body.userId,
+        password: req.body.password,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+      });
+
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err;
+
+          newUser.password = hash;
+          newUser
+            .save()
+            .then((user) => res.json(user))
+            .catch((err) => console.log(err));
+        });
+      });
+    }
+  });
+});
+
+// Login Handle
+router.post("/signIn", (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  // find user by email
+  USER.findOne({ email }).then((user) => {
+    if (!user) {
+      errors.email = "해당하는 회원이 존재하지 않습니다.";
+      return res.status(400).json(errors);
+    }
+
+    // check password
+    bcrypt.compare(password, user.password).then((isMatch) => {
+      if (isMatch) {
+        // user password matches
+        // generate JWT PAYLOAD
+        const payload = {
+          id: user.id,
+          name: user.name,
+        };
+
+        // create JWT
+        // is valid for an hour
+        jwt.sign(
+          payload,
+          key.secretOrKey,
+          { expiresIn: 3600 },
+          (err, token) => {
+            res.json({
+              success: true,
+              token: "Bearer " + token,
+            });
+          }
+        );
+      } else {
+        errors.password = "패스워드가 일치하지 않습니다.";
+        return res.status(400).json(errors);
+      }
+    });
+  });
 });
 
 module.exports = router;

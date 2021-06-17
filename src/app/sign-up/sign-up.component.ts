@@ -1,6 +1,7 @@
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,24 +10,35 @@ import { AuthService } from '../auth.service';
 })
 export class SignUpComponent implements OnInit {
   signUpForm = this.fb.group({
-    userId: ['', Validators.required],
-    password: ['', Validators.required],
-    firstName: ['', Validators.required],
-    lastName: [''],
-    address: this.fb.group({
-      street: [''],
-      city: [''],
-      state: [''],
-      zip: [''],
-    }),
+    userId: ['gitple', Validators.required],
+    password: ['gitple', Validators.required],
+    firstName: ['gitple', Validators.required],
+    lastName: ['gitple'],
+    // address: this.fb.group({
+    //   street: [''],
+    //   city: [''],
+    //   state: [''],
+    //   zip: [''],
+    // }),
   });
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private location: Location
+  ) {}
 
   ngOnInit(): void {}
 
+  goSignIn(): void {
+    this.location.back();
+  }
+
   onSubmit() {
     console.warn(this.signUpForm.value);
-    this.authService.getUserInfo(this.signUpForm.value).subscribe();
+
+    this.authService
+      .registerUserInfo(this.signUpForm.value)
+      .subscribe(() => this.goSignIn());
   }
 }

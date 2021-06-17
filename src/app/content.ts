@@ -7,3 +7,10 @@ export interface BLOG_ITEM {
   createdAt: number;
   username: string;
 }
+
+export interface USER_INFO {
+  userId: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+}

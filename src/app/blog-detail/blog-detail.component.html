@@ -20,12 +20,12 @@
     <input
       class="form-control"
       type="text"
-      value="{{ blogItem.title }}"
+      value="{{ blogItem?.title }}"
       formControlName="newTitle"
     />
     <label for="blogTitle">Content:</label>
     <textarea class="form-control" rows="10" formControlName="newContent">{{
-      blogItem.body
+      blogItem?.body
     }}</textarea>
     <button type="submit" class="updateBtn" >
       Update

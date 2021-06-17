@@ -1,12 +1,14 @@
 .formGroup {
   min-width: 400px;
+  width: 40%;
+  margin: 0 auto;
   padding: 30px;
   border-radius: 10px;
   background-color: #fff;
 }
 
-.formGroup > h1{
-    font-size:1.5rem;
+.formGroup > h1 {
+  font-size: 1.5rem;
 }
 
 .formInput {

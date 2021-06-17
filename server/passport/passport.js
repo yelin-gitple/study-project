@@ -1,39 +1,30 @@
-const passport = require("passport");
-const { Strategy: LocalStrategy } = require("passport-local");
-const bcrypt = require("bcrypt");
+const JwtStrategy = require("passport-jwt").Strategy;
+const ExtractJwt = require("passport-jwt").ExtractJwt;
 
-const User = require("../models/user");
+const mongoose = require("mongoose");
+const USER = require("../models/user");
 
-//passport options
-const passportConfig = { usernameField: "userId", passwordField: "password" };
+const keys = require("./key").secretOrKey;
 
-const passportVerify = async (userId, password, done) => {
-  try {
-    // find user
-    const user = await User.findOne({ user_id: userId });
+const opts = {};
 
-    if (!user) {
-      done(null, false, { reason: "There is no match user information" });
-      return;
-    }
+// deliver jwt client to server
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.secretOrKey = keys;
 
-    //if user exists, compare hashed password
-    const compareResult = await bcrypt.compare(password, user.password);
+module.exports = (passport) => {
+  passport.use(
+    new JwtStrategy(opts, (jwt_payload, done) => {
+      USER.findById(jwt_payload.id)
+        .then((user) => {
+          if (user) {
+            return done(null, user);
+          }
+          return done(null, false);
+        })
+        .catch((err) => console.log(err));
+    })
+  );
 
-    // if hashed password matches, send user data
-    if (compareResult) {
-      done(null, user);
-      return;
-    }
-
-    //if hashed password doesn't match
-    done(null, false, { reason: "Incorrect password" });
-  } catch (error) {
-    console.error(error);
-    done(error);
-  }
-};
-
-module.exports = () => {
-  passport.use("local", new LocalStrategy(passportConfig, passportVerify));
+  
 };
