@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogListService } from '../blog-list.service';
+import { BlogListService } from '../../service/blog-list.service';
 import { BLOG_ITEM } from '../content';
 //import { BLOG_LIST } from '../mock-contents';
 

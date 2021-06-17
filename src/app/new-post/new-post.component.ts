@@ -1,6 +1,6 @@
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { BlogListService } from '../blog-list.service';
+import { BlogListService } from '../../service/blog-list.service';
 import { Location } from '@angular/common';
 
 @Component({

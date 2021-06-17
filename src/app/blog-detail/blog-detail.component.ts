@@ -2,7 +2,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BlogListService } from '../blog-list.service';
+import { BlogListService } from '../../service/blog-list.service';
 import { BLOG_ITEM } from '../content';
 
 @Component({
@@ -46,7 +46,7 @@ export class BlogDetailComponent implements OnInit {
     this.editing = !this.editing;
   }
 
-  handleUpdate(e: MouseEvent) {
+  handleUpdate(e: Event) {
     e.preventDefault();
     this.editing = false;
     if (this.blogItem) {
@@ -59,10 +59,12 @@ export class BlogDetailComponent implements OnInit {
     }
   }
 
-  delete(blogItem: BLOG_ITEM) {
-    this.blogListService.deleteBlogItem(blogItem._id).subscribe(() => {
-      this.goToBack();
-    });
+  delete(blogItem: BLOG_ITEM | undefined) {
+    if (blogItem !== undefined) {
+      this.blogListService.deleteBlogItem(blogItem._id).subscribe(() => {
+        this.goToBack();
+      });
+    }
   }
 
   goToBack(): void {

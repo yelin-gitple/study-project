@@ -21,9 +21,6 @@ router.get(
   }
 );
 
-//Register Page
-//router.get("/signUp", (req, res) => res.send("signUp"));
-
 //Register Handle
 router.post("/signUp", async (req, res) => {
   await USER.findOne({ userId: req.body.userId }).then((user) => {
@@ -56,14 +53,17 @@ router.post("/signUp", async (req, res) => {
 
 // Login Handle
 router.post("/signIn", (req, res) => {
-  const email = req.body.email;
+  const userId = req.body.userId;
   const password = req.body.password;
 
-  // find user by email
-  USER.findOne({ email }).then((user) => {
+  // find user by userId
+  USER.findOne({ userId }).then((user) => {
+
     if (!user) {
-      errors.email = "해당하는 회원이 존재하지 않습니다.";
-      return res.status(400).json(errors);
+      //errors.userId = "해당하는 회원이 존재하지 않습니다.";
+      return res.status(400).json({
+        message:"Incorrect ID"
+      });
     }
 
     // check password
@@ -73,8 +73,10 @@ router.post("/signIn", (req, res) => {
         // generate JWT PAYLOAD
         const payload = {
           id: user.id,
-          name: user.name,
+          name: `${user.firstName} ${user.lastName}`,
         };
+
+        console.log(user)
 
         // create JWT
         // is valid for an hour
@@ -85,13 +87,17 @@ router.post("/signIn", (req, res) => {
           (err, token) => {
             res.json({
               success: true,
+              userId:user.userId,
+              username:payload.name,
               token: "Bearer " + token,
             });
           }
         );
       } else {
-        errors.password = "패스워드가 일치하지 않습니다.";
-        return res.status(400).json(errors);
+        //errors.password = "패스워드가 일치하지 않습니다.";
+        return res.status(400).json({
+          message:"Password doesn't match"
+        });
       }
     });
   });

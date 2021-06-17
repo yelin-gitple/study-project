@@ -1,6 +1,6 @@
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../service/auth.service';
 import { Location } from '@angular/common';
 
 @Component({
@@ -38,7 +38,7 @@ export class SignUpComponent implements OnInit {
     console.warn(this.signUpForm.value);
 
     this.authService
-      .registerUserInfo(this.signUpForm.value)
+      .signUp(this.signUpForm.value)
       .subscribe(() => this.goSignIn());
   }
 }

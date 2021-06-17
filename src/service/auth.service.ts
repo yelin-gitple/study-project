@@ -2,7 +2,7 @@ import { catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { USER_INFO } from './content';
+import { USER_INFO, USER_ID_PW } from '../app/content';
 
 // const httpOptions = {
 //   headers: new HttpHeaders({
@@ -20,11 +20,16 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  registerUserInfo(userInfo: USER_INFO): Observable<USER_INFO> {
-    console.log(userInfo)
+  signUp(userInfo: USER_INFO): Observable<USER_INFO> {
     return this.http
       .post<USER_INFO>(`${this.authUrl}/signUp`, userInfo)
-      .pipe(catchError(this.handleError<USER_INFO>('registerUserInfo')));
+      .pipe(catchError(this.handleError<USER_INFO>('signUp')));
+  }
+
+  signIn(userId: string, password: string): Observable<USER_ID_PW> {
+    return this.http
+      .post<USER_ID_PW>(`${this.authUrl}/signIn`, { userId, password })
+      .pipe(catchError(this.handleError<USER_ID_PW>('signIn')));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

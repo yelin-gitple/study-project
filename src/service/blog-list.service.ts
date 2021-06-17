@@ -1,4 +1,4 @@
-import { BLOG_ITEM } from './content';
+import { BLOG_ITEM } from '../app/content';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';

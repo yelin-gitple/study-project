@@ -14,3 +14,10 @@ export interface USER_INFO {
   firstName: string;
   lastName: string;
 }
+
+export interface USER_ID_PW {
+  success: boolean;
+  userId: string;
+  password: string;
+  token: string;
+}

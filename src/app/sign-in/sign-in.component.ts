@@ -1,5 +1,7 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../../service/auth.service';
 
 
 @Component({
@@ -13,13 +15,25 @@ export class SignInComponent implements OnInit {
     password: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private location: Location
+  ) {}
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void {}
+
+  goToHome() {
+    this.location.go('/home');
   }
 
-  onSubmit(){
-    console.warn(this.signInForm.value)
+  onSubmit() {
+    const { userId, password } = this.signInForm.value;
+    this.authService.signIn(userId, password).subscribe((result) => {
+      console.log(result);
+      if (result) this.goToHome();
+    });
   }
 }
+
+
