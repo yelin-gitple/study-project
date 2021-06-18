@@ -20,6 +20,10 @@
       />
     </div>
 
+    <p *ngIf="authMessage.length" class="errorMessage">
+      {{ this.authMessage }}!
+    </p>
+
     <p class="formText">
       You don't have a account? <a routerLink="/signUp">Click</a>
     </p>

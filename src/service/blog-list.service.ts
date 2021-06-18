@@ -36,7 +36,6 @@ export class BlogListService {
   }
 
   addPost(blog: BLOG_ITEM): Observable<BLOG_ITEM> {
-    console.log("blog list service",blog)
     return this.http
       .post<BLOG_ITEM>(`${this.blogListUrl}`, blog)
       .pipe(catchError(this.handleError<BLOG_ITEM>('addPost')));

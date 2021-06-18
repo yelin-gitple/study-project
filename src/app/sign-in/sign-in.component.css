@@ -36,3 +36,9 @@
 .formBtn:hover {
   opacity: 0.7;
 }
+
+/* errorMessage */
+.errorMessage {
+  font-size: 0.8rem;
+  color: #dd4e4e;
+}

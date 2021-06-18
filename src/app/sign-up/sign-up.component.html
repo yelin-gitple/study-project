@@ -38,35 +38,10 @@
         formControlName="lastName"
       />
     </div>
-    <!-- <div class="address" formGroupName="address">
-      <h4>Address</h4>
-      <label for="street">Street: </label>
-      <input
-        id="street"
-        class="form-control"
-        type="text"
-        formControlName="street"
-      />
 
-      <label for="city">City: </label>
-      <input
-        id="city"
-        class="form-control"
-        type="text"
-        formControlName="city"
-      />
-
-      <label for="state">State: </label>
-      <input
-        id="state"
-        class="form-control"
-        type="text"
-        formControlName="state"
-      />
-
-      <label for="zip">Zip Code: </label>
-      <input id="zip" class="form-control" type="text" formControlName="zip" />
-    </div> -->
+    <p *ngIf="authMessage" class="errorMessage">
+      {{ this.authMessage }}!
+    </p>
 
     <p class="formText">
       You already have an account? <a routerLink="/signIn">Click</a>

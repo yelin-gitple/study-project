@@ -11,9 +11,9 @@ router.get(
   "/current",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    console.log(req.user._id)
     res.json({
-      userId: req.user.userId,
-      password: req.user.password,
+      userId: req.user._id,
       firstName: req.user.firstName,
       lastName: req.user.lastName,
     });
@@ -25,7 +25,7 @@ router.post("/signUp", async (req, res) => {
   await USER.findOne({ userId: req.body.userId }).then((user) => {
     if (user) {
       return res.status(400).json({
-        userId: "해당 이메일을 가진 사용자가 존재합니다.",
+        message: "User ID is already exists",
       });
     } else {
       const newUser = new USER({
@@ -52,6 +52,7 @@ router.post("/signUp", async (req, res) => {
 
 // Login Handle
 router.post("/signIn", (req, res) => {
+  console.log(req.body)
   const userId = req.body.userId;
   const password = req.body.password;
 
@@ -64,13 +65,16 @@ router.post("/signIn", (req, res) => {
       });
     }
 
+    console.log(user)
+
     // check password
     bcrypt.compare(password, user.password).then((isMatch) => {
       if (isMatch) {
         // user password matches
         // generate JWT PAYLOAD
         const payload = {
-          id: user.id,
+          uid: user._id,
+          userId: user.userId,
           name: `${user.firstName} ${user.lastName}`,
         };
 
@@ -83,6 +87,7 @@ router.post("/signIn", (req, res) => {
           (err, token) => {
             res.json({
               success: true,
+              uid: user._id,
               userId: user.userId,
               username: payload.name,
               token: "Bearer " + token,

@@ -1,4 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { GlobalDataService } from 'src/service/global-data.service';
 
 @Component({
@@ -10,7 +12,10 @@ export class HeaderComponent implements OnInit {
   title: string = 'Blog Study Project';
   loggedIn: boolean = false;
 
-  constructor(private globalData: GlobalDataService) {}
+  constructor(
+    private globalData: GlobalDataService,
+    private location: Location,
+  ) {}
 
   ngOnInit(): void {
     // check user logged in
@@ -28,6 +33,8 @@ export class HeaderComponent implements OnInit {
   signOut() {
     this.globalData.updatedDataSelection(null);
     localStorage.setItem('LoggedIn', 'false');
-    alert("You just logged out! 👋")
+    alert('You just logged out! 👋');
+
+
   }
 }

@@ -8,7 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/signIn', pathMatch: 'full' },
   { path: 'home', component: BlogListComponent },
   { path: 'signIn', component: SignInComponent },
   { path: 'signUp', component: SignUpComponent },
