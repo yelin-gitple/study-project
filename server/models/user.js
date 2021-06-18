@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
 const UserSchema = Schema({
-  //_id: mongoose.Types.ObjectId,
   userId: {
     type: String,
     required: true,

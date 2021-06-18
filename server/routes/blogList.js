@@ -31,6 +31,7 @@ router.get("/detail/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const blogItem = await BLOG.create(req.body);
+    console.log("server", blogItem);
     res.json(blogItem);
   } catch (error) {
     res.status(500).json({ error });

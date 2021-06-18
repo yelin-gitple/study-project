@@ -17,25 +17,25 @@
         id="pw"
         class="form-control"
         type="password"
-        formControlName="firstName"
+        formControlName="password"
       />
     </div>
     <div class="formInput">
       <label for="pw">First Name:</label>
       <input
-        id="pw"
+        id="firstName"
         class="form-control"
         type="text"
-        formControlName="lastName"
+        formControlName="firstName"
       />
     </div>
     <div class="formInput">
       <label for="pw">Last Name:</label>
       <input
-        id="pw"
+        id="lastName"
         class="form-control"
         type="text"
-        formControlName="password"
+        formControlName="lastName"
       />
     </div>
     <!-- <div class="address" formGroupName="address">
@@ -71,13 +71,8 @@
     <p class="formText">
       You already have an account? <a routerLink="/signIn">Click</a>
     </p>
-    <button
-      class="formBtn"
-      type="submit"
-      [disabled]="!signUpForm.valid"
-    >
+    <button class="formBtn" type="submit" [disabled]="!signUpForm.valid">
       Sign up
     </button>
   </form>
 </div>
-<!-- <p>Form status: {{ signUpForm.status }}</p> -->

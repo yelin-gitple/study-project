@@ -31,12 +31,10 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {}
 
   goSignIn(): void {
-    this.location.back();
+    this.location.go('/signIn');
   }
 
   onSubmit() {
-    console.warn(this.signUpForm.value);
-
     this.authService
       .signUp(this.signUpForm.value)
       .subscribe(() => this.goSignIn());

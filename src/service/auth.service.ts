@@ -4,14 +4,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { USER_INFO, USER_ID_PW } from '../app/content';
 
-// const httpOptions = {
-//   headers: new HttpHeaders({
-//     'Content-Type': 'application/json',
-//     Authorization: 'my-auth-token',
-//     'Access-Control-Allow-Origin': '*',
-//   }),
-// };
-
 @Injectable({
   providedIn: 'root',
 })

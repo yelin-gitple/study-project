@@ -12,7 +12,6 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     res.json({
-      //id: req.user.id,
       userId: req.user.userId,
       password: req.user.password,
       firstName: req.user.firstName,
@@ -58,11 +57,10 @@ router.post("/signIn", (req, res) => {
 
   // find user by userId
   USER.findOne({ userId }).then((user) => {
-
     if (!user) {
       //errors.userId = "해당하는 회원이 존재하지 않습니다.";
       return res.status(400).json({
-        message:"Incorrect ID"
+        message: "Incorrect ID",
       });
     }
 
@@ -76,8 +74,6 @@ router.post("/signIn", (req, res) => {
           name: `${user.firstName} ${user.lastName}`,
         };
 
-        console.log(user)
-
         // create JWT
         // is valid for an hour
         jwt.sign(
@@ -87,8 +83,8 @@ router.post("/signIn", (req, res) => {
           (err, token) => {
             res.json({
               success: true,
-              userId:user.userId,
-              username:payload.name,
+              userId: user.userId,
+              username: payload.name,
               token: "Bearer " + token,
             });
           }
@@ -96,7 +92,7 @@ router.post("/signIn", (req, res) => {
       } else {
         //errors.password = "패스워드가 일치하지 않습니다.";
         return res.status(400).json({
-          message:"Password doesn't match"
+          message: "Password doesn't match",
         });
       }
     });

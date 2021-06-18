@@ -1,5 +1,7 @@
+//import { GlobalState } from './../service/global-state.service';
 import { Component } from '@angular/core';
 import { setTheme } from 'ngx-bootstrap/utils';
+import { GlobalDataService } from 'src/service/global-data.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,9 @@ import { setTheme } from 'ngx-bootstrap/utils';
 export class AppComponent {
   title = 'blog-study-project';
 
-  constructor() {
+  constructor(private globalData: GlobalDataService) {
     setTheme('bs3');
   }
+
+  ngOnInit() {}
 }
