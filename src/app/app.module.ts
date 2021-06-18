@@ -36,4 +36,6 @@ import { GlobalDataService } from 'src/service/global-data.service';
   providers: [GlobalDataService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  
+}

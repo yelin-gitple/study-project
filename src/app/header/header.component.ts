@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private globalData: GlobalDataService,
-    private location: Location,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -28,13 +28,14 @@ export class HeaderComponent implements OnInit {
     let ls_loggedIn = localStorage.getItem('LoggedIn');
     if (ls_loggedIn === 'true') this.loggedIn = true;
     else this.loggedIn = false;
+
+    console.log('logged in', this.loggedIn);
   }
 
   signOut() {
     this.globalData.updatedDataSelection(null);
     localStorage.setItem('LoggedIn', 'false');
     alert('You just logged out! 👋');
-
-
+    this.router.navigateByUrl('/signIn');
   }
 }

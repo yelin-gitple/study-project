@@ -35,7 +35,7 @@ export class SignInComponent implements OnInit {
   }
 
   goToHome() {
-    this.location.replaceState('/home');
+    this.router.navigateByUrl('/home');
   }
 
   onSubmit() {
@@ -44,10 +44,13 @@ export class SignInComponent implements OnInit {
       this.globalData.updatedDataSelection(result);
       localStorage.setItem('LoggedIn', 'true');
       localStorage.setItem('USER', JSON.stringify(result));
+
       if (result) this.goToHome();
+      //alert('You just logged in! 🤗');
+
+      console.log(this.authService.errorMessage)
 
       this.authMessage = this.authService.errorMessage;
     });
-    //alert('You just logged in! 🤗');
   }
 }

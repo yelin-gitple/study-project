@@ -3,9 +3,12 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+
+import { AuthGuard } from 'src/guard/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/signIn', pathMatch: 'full' },

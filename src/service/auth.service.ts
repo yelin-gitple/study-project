@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { USER_INFO, USER_ID_PW } from '../app/content';
-import { Console } from 'console';
+
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,8 @@ export class AuthService {
   private log(message: string) {
     this.messageService.add(`⚠️ Error: ${message}`);
   }
-   errorMessage: string = '';
+  errorMessage: string = '';
+  redirectUrl: string | null = null;
 
   constructor(
     private http: HttpClient,

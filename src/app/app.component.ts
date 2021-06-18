@@ -10,10 +10,16 @@ import { GlobalDataService } from 'src/service/global-data.service';
 })
 export class AppComponent {
   title = 'blog-study-project';
+  userState:boolean = false;
 
   constructor(private globalData: GlobalDataService) {
     setTheme('bs3');
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.globalData.getUserData().subscribe(user => {
+      if(user) this.userState = true;
+      console.log(this.userState)
+    })
+  }
 }
