@@ -19,10 +19,7 @@ const UserSchema = Schema({
     type: String,
     required: true,
   },
-  // date: {
-  //   type: Date,
-  //   default: Date.now,
-  // },
+
 });
 
 module.exports = model("User", UserSchema);

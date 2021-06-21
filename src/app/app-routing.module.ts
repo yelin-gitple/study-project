@@ -1,3 +1,4 @@
+import { KeywordsComponent } from './keywords/keywords.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
@@ -8,8 +9,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
-import { AuthGuard } from 'src/guard/auth.guard';
-
 const routes: Routes = [
   { path: '', redirectTo: '/signIn', pathMatch: 'full' },
   { path: 'home', component: BlogListComponent },
@@ -17,6 +16,7 @@ const routes: Routes = [
   { path: 'signUp', component: SignUpComponent },
   { path: 'detail/:id', component: BlogDetailComponent },
   { path: 'newPost', component: NewPostComponent },
+  { path: 'keywords', component: KeywordsComponent },
 ];
 
 @NgModule({

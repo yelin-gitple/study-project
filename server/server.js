@@ -7,6 +7,7 @@ const passport = require("passport");
 
 const blogRouter = require("./routes/blogList");
 const userRouter = require("./routes/users");
+const keywordsRouter = require("./routes/keywords");
 
 const app = express();
 
@@ -38,6 +39,8 @@ app.use(express.static(path.join(__dirname, "dist/blog-study-project")));
 //main routing
 app.use("/api/blogList", blogRouter);
 app.use("/api/users", userRouter);
+app.use("/api/keywords", keywordsRouter);
+
 
 // set passport module
 require("./passport/passport")(passport);

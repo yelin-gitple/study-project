@@ -3,6 +3,7 @@
   <nav id="nav">
     <p *ngIf="username.length" class="username">Hello {{this.username}}!</p>
     <a *ngIf="loggedIn" class="menu" routerLink="/home">Home</a>
+    <a *ngIf="loggedIn" class="menu" routerLink="/keywords">Keywords</a>
     <p *ngIf="!loggedIn">
       <a class="menu signIn" routerLink="signIn">Sign In</a>
       <a class="menu signUp" routerLink="signUp">Sign Up</a>

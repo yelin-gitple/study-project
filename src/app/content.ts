@@ -2,7 +2,7 @@ import { ObjectId } from 'mongoose';
 
 export interface BLOG_ITEM {
   _id?: ObjectId;
-  uid:string;
+  uid: string;
   userId: string;
   title: string;
   body: string;
@@ -25,6 +25,9 @@ export interface USER_ID_PW {
   token: string;
 }
 
-export const USER: string = 'USER';
+export interface KEYWORD {
+  keyword: string;
+  keywordList: [];
+}
 
-//export const LS_USER = JSON.parse(localStorage.getItem(USER) || "");
+export const USER: string = 'USER';
