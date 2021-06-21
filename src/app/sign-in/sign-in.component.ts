@@ -48,8 +48,6 @@ export class SignInComponent implements OnInit {
       if (result) this.goToHome();
       //alert('You just logged in! 🤗');
 
-      console.log(this.authService.errorMessage)
-
       this.authMessage = this.authService.errorMessage;
     });
   }

@@ -11,7 +11,6 @@ router.get(
   "/current",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    console.log(req.user._id)
     res.json({
       userId: req.user._id,
       firstName: req.user.firstName,
@@ -52,7 +51,6 @@ router.post("/signUp", async (req, res) => {
 
 // Login Handle
 router.post("/signIn", (req, res) => {
-  console.log(req.body)
   const userId = req.body.userId;
   const password = req.body.password;
 
@@ -64,8 +62,6 @@ router.post("/signIn", (req, res) => {
         message: "Incorrect ID",
       });
     }
-
-    console.log(user)
 
     // check password
     bcrypt.compare(password, user.password).then((isMatch) => {

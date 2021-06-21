@@ -16,7 +16,7 @@ import { identity } from 'lodash';
   styleUrls: ['./blog-detail.component.css'],
 })
 export class BlogDetailComponent implements OnInit {
-  currentUserId: string = '';
+  currentUserId: boolean = false;
   blogItem: BLOG_ITEM | undefined;
   editing: boolean = false;
   paramId = this.route.snapshot.paramMap.get('id');
@@ -41,7 +41,7 @@ export class BlogDetailComponent implements OnInit {
 
   getBlogItem(): void {
     this.blogListService.getBlogItem(this.paramId).subscribe((item) => {
-      this.handleUser(item);
+      this.handleUser(item.uid);
       this.blogItem = item;
 
       this.editForm = this.fb.group({
@@ -51,13 +51,11 @@ export class BlogDetailComponent implements OnInit {
     });
   }
 
-  handleUser(blogInfo: any): void {
-    this.authService
-      .getCurrentUser(JSON.parse(localStorage.getItem(USER) || '').token)
-      .subscribe((result) => {
-        console.log(result)
-        //console.log(result, blogInfo);
-      });
+  handleUser(uid: string): void {
+    const ls_currentUid = JSON.parse(localStorage.getItem(USER) || '').uid;
+    if (uid === ls_currentUid) {
+      this.currentUserId = true;
+    }
   }
 
   toggleEditing(): void {
@@ -73,15 +71,22 @@ export class BlogDetailComponent implements OnInit {
         title: this.editForm.value.newTitle,
         body: this.editForm.value.newContent,
       };
-      this.blogListService.updateBlogItem(this.blogItem).subscribe();
+
+      const OK = window.confirm('Are you sure want to update this post?');
+      if (OK) {
+        this.blogListService.updateBlogItem(this.blogItem).subscribe();
+      }
     }
   }
 
   delete(blogItem: BLOG_ITEM | undefined) {
     if (blogItem !== undefined) {
-      this.blogListService.deleteBlogItem(blogItem._id).subscribe(() => {
-        this.goToBack();
-      });
+      const OK = window.confirm('Are you sure want to delete this post?');
+      if (OK) {
+        this.blogListService.deleteBlogItem(blogItem._id).subscribe(() => {
+          this.goToBack();
+        });
+      }
     }
   }
 

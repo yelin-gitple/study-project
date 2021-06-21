@@ -39,7 +39,6 @@ export class AuthService {
   }
 
   getCurrentUser(token: string): Observable<any> {
-    console.log(token);
     return this.http
       .get(`${this.authUrl}/current`, {
         headers: new HttpHeaders({

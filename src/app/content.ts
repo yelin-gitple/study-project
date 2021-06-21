@@ -2,6 +2,7 @@ import { ObjectId } from 'mongoose';
 
 export interface BLOG_ITEM {
   _id?: ObjectId;
+  uid:string;
   userId: string;
   title: string;
   body: string;

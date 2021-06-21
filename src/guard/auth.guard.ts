@@ -29,7 +29,6 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     const url: string = state.url;
-    console.log("auth guard",url);
     return this.checkLogin(url);
   }
 

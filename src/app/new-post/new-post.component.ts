@@ -22,6 +22,7 @@ export class NewPostComponent implements OnInit {
     createdAt: Date.now(),
     username: '',
     userId: '',
+    uid: '',
   };
 
   constructor(
@@ -40,6 +41,7 @@ export class NewPostComponent implements OnInit {
   onSubmit() {
     // TO DO:
     //console.warn(this.newPostForm.value);
+    console.log('on submit');
   }
 
   goBack(): void {
@@ -47,13 +49,23 @@ export class NewPostComponent implements OnInit {
   }
 
   add() {
-    const newPostObj = {
-      ...this.newPostForm.value,
-      createdAt: Date.now(),
-      username: this.ls_user.username,
-      userId: this.ls_user.userId,
-    };
+    const { title, body } = this.newPostForm.value;
+    if (title === '' || body === '')
+      alert('Please enter your post title and content!');
 
-    this.blogListService.addPost(newPostObj).subscribe(() => this.goBack());
+    if (title !== '' && body !== '') {
+      const OK = window.confirm('Do you want add this post?');
+      if (OK) {
+        const newPostObj = {
+          ...this.newPostForm.value,
+          createdAt: Date.now(),
+          username: this.ls_user.username,
+          userId: this.ls_user.userId,
+          uid: this.ls_user.uid,
+        };
+
+        this.blogListService.addPost(newPostObj).subscribe(() => this.goBack());
+      }
+    }
   }
 }

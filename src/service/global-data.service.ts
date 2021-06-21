@@ -15,7 +15,6 @@ export class GlobalDataService {
   }
 
   updatedDataSelection(data: any) {
-    console.log(data)
     this.dataSource.next(data);
   }
 }

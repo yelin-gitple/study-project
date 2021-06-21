@@ -36,9 +36,8 @@ export class SignUpComponent implements OnInit {
     this.globalState.updatedDataSelection(null);
     this.authService.signUp(this.signUpForm.value).subscribe(() => {
       this.goSignIn();
-      console.log(this.authService.errorMessage)
+
       this.authMessage = this.authService.errorMessage;
-      console.log(this.authMessage)
     });
   }
 }

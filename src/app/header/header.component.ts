@@ -12,10 +12,7 @@ export class HeaderComponent implements OnInit {
   title: string = 'Blog Study Project';
   loggedIn: boolean = false;
 
-  constructor(
-    private globalData: GlobalDataService,
-    private router: Router
-  ) {}
+  constructor(private globalData: GlobalDataService, private router: Router) {}
 
   ngOnInit(): void {
     // check user logged in
@@ -28,8 +25,6 @@ export class HeaderComponent implements OnInit {
     let ls_loggedIn = localStorage.getItem('LoggedIn');
     if (ls_loggedIn === 'true') this.loggedIn = true;
     else this.loggedIn = false;
-
-    console.log('logged in', this.loggedIn);
   }
 
   signOut() {

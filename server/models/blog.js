@@ -7,7 +7,8 @@ const BlogSchema = new Schema({
   body: String,
   createdAt: Number,
   username: String,
-  userId:String
+  userId:String,
+  uid:String
 });
 
 module.exports = model("Blog", BlogSchema);
