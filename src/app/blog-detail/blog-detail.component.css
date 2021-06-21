@@ -2,9 +2,10 @@
   min-width: 500px;
   width: 90%;
   margin: 0 auto;
-  padding: 30px;
+  padding: 70px 30px 30px;
   border-radius: 10px;
   background-color: #fff;
+  position: relative;
 }
 
 /* blogItem */
@@ -32,28 +33,40 @@
 }
 
 .edit-deleteBtn > button {
+  display: flex;
+  align-items: center;
   padding: 10px;
   margin-top: 10px;
   margin-left: 10px;
   border-radius: 5px;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   cursor: pointer;
+  color: #777;
 }
 
 .edit-deleteBtn > button:hover {
   opacity: 0.7;
 }
 
+.iconText {
+  padding-left: 5px;
+}
+
 /* blogItem / backBtn */
 .backBtn {
   position: absolute;
-  right: 5%;
+  left: 10px;
+  top: 0;
   margin-top: 10px;
   padding: 10px;
   border-radius: 5px;
-  font-size: 0.7rem;
-  background-color: skyblue;
+  font-size: 1.1rem;
   cursor: pointer;
+  color: skyblue;
+}
+
+.backBtn > i{
+  padding-right:8px;
 }
 
 .backBtn:hover {
@@ -68,9 +81,9 @@
   padding: 10px 0;
   border-radius: 5px;
   background-color: skyblue;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.updateBtn:hover{
+.updateBtn:hover {
   opacity: 0.7;
 }

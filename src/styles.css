@@ -8,6 +8,10 @@ li {
   list-style-type: none;
 }
 
+a:link{
+  text-decoration: none;
+}
+
 select,
 input,
 textarea,

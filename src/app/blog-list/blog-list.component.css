@@ -11,6 +11,19 @@
   border-bottom: 1px solid #efefef;
 }
 
+.blogListItem:hover .blogTitle{
+  text-decoration: underline;
+}
+
+.blogListItem > .blogLink{
+  display: flex;
+}
+
+.blogLink > .blogDate{
+  flex-grow: 1;
+  text-align: right;
+}
+
 .newPostBtn {
   position: absolute;
   right: 5%;

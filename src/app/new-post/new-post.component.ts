@@ -35,8 +35,6 @@ export class NewPostComponent implements OnInit {
     if (localStorage.getItem(USER) !== null) {
       this.ls_user = JSON.parse(localStorage.getItem(USER) || '');
     }
-
-
   }
 
   onSubmit() {
