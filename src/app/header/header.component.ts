@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalDataService } from 'src/service/global-data.service';
+import { USER } from '../content';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,7 @@ import { GlobalDataService } from 'src/service/global-data.service';
 export class HeaderComponent implements OnInit {
   title: string = 'Blog Study Project';
   loggedIn: boolean = false;
+  username: string = '';
 
   constructor(private globalData: GlobalDataService, private router: Router) {}
 
@@ -22,9 +24,12 @@ export class HeaderComponent implements OnInit {
     });
 
     // check localStorage
-    let ls_loggedIn = localStorage.getItem('LoggedIn');
-    if (ls_loggedIn === 'true') this.loggedIn = true;
-    else this.loggedIn = false;
+    let ls_user = JSON.parse(localStorage.getItem(USER) || '');
+    if (ls_user) {
+      this.loggedIn = true;
+      this.username = ls_user.username;
+    } else this.loggedIn = false;
+
   }
 
   signOut() {

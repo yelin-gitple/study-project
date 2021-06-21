@@ -10,10 +10,16 @@
   font-size: 1.6rem;
 }
 
+/* nav */
 #nav {
   flex-grow: 1;
 
   text-align: right;
+}
+
+.username{
+  font-size: 0.7rem;
+  color: #aaa;
 }
 
 .menu {
