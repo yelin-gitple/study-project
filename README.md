@@ -1,4 +1,8 @@
-# BlogStudyProject
+# Blog Study Project
+## 🏁 How to run
+    yarn start
+
+#
 
 ## ⚒️ Technologies
 #### Frontend
