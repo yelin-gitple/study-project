@@ -1,0 +1,24 @@
+.title {
+  padding: 0 5% 10px;
+  font-size:1.5rem;
+}
+
+.keywords {
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 5%;
+}
+
+.keyword {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #efefef;
+  color: #007ff0;
+}
+
+.keyword > .frequency {
+  text-align: right;
+  flex-grow: 1;
+}

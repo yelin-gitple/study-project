@@ -26,8 +26,7 @@ export interface USER_ID_PW {
 }
 
 export interface KEYWORD {
-  keyword: string;
-  keywordList: [];
+  keywordsList: [];
 }
 
 export const USER: string = 'USER';

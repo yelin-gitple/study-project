@@ -1,1 +1,11 @@
-<p>keywords works!</p>
+<h2 class="title">Top 5 Keywords</h2>
+<ul class="keywords">
+  <li class="keyword" *ngFor="let keyword of keywords.keywordsList">
+    <span class="keywordItem">
+      {{ keyword[0] }}
+    </span>
+    <span class="frequency">
+      {{ keyword[1] }}
+    </span>
+  </li>
+</ul>

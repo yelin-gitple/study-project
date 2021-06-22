@@ -1,3 +1,4 @@
+import { KEYWORD } from './../content';
 import { Component, OnInit } from '@angular/core';
 import { KeywordsService } from 'src/service/keywords.service';
 
@@ -7,12 +8,15 @@ import { KeywordsService } from 'src/service/keywords.service';
   styleUrls: ['./keywords.component.css'],
 })
 export class KeywordsComponent implements OnInit {
+  keywords: KEYWORD = {
+    keywordsList:[]
+  };
+
   constructor(private keywordsService: KeywordsService) {}
 
   ngOnInit(): void {
-    console.log(this.keywordsService.getKeywords())
-    this.keywordsService.getKeywords().subscribe(result => {
-      console.log(result)
+    this.keywordsService.getKeywords().subscribe((result) => {
+      this.keywords =result;
     });
   }
 }
