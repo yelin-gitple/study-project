@@ -28,10 +28,7 @@ export class SignInComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.router.events.subscribe((event) => {
-    //   //console.log(this.location.path());
-    //   this.location.go("/home")
-    // });
+    
   }
 
   goToHome() {

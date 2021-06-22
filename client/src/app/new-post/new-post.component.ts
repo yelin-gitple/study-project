@@ -39,16 +39,6 @@ export class NewPostComponent implements OnInit {
   }
 
   onSubmit() {
-    // TO DO:
-    //console.warn(this.newPostForm.value);
-    console.log('on submit');
-  }
-
-  goBack(): void {
-    this.location.back();
-  }
-
-  add() {
     const { title, body } = this.newPostForm.value;
     if (title === '' || body === '')
       alert('Please enter your post title and content!');
@@ -67,5 +57,9 @@ export class NewPostComponent implements OnInit {
         this.blogListService.addPost(newPostObj).subscribe(() => this.goBack());
       }
     }
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }
