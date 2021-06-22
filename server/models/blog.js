@@ -1,14 +1,15 @@
-const mongoose = require("mongoose");
+const restful = require("node-restful");
+const mongoose = restful.mongoose;
 
 const { Schema, model } = mongoose;
 
-const BlogSchema = new Schema({
+const BlogSchema = {
   title: String,
   body: String,
   createdAt: Number,
   username: String,
-  userId:String,
-  uid:String
-});
+  userId: String,
+  uid: String,
+};
 
-module.exports = model("Blog", BlogSchema);
+module.exports = mongoose.model("Blog", BlogSchema);

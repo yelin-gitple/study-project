@@ -1,4 +1,4 @@
-import { USER } from './../content';
+import { USER } from '../content';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';

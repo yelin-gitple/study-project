@@ -1,4 +1,4 @@
-import { MessageService } from './../../service/message.service';
+import { MessageService } from '../../service/message.service';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';

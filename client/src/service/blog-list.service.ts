@@ -28,7 +28,7 @@ export class BlogListService {
   }
 
   getBlogItem(id: any): Observable<BLOG_ITEM> {
-    const url = `${this.blogListUrl}/detail/${id}`;
+    const url = `${this.blogListUrl}/${id}`;
 
     return this.http
       .get<BLOG_ITEM>(url)
@@ -37,20 +37,19 @@ export class BlogListService {
 
   addPost(blog: BLOG_ITEM): Observable<BLOG_ITEM> {
     return this.http
-      .post<BLOG_ITEM>(`${this.blogListUrl}/newPost`, blog)
+      .post<BLOG_ITEM>(`${this.blogListUrl}`, blog)
       .pipe(catchError(this.handleError<BLOG_ITEM>('addPost')));
   }
 
   updateBlogItem(blogItem: BLOG_ITEM): Observable<BLOG_ITEM> {
-    const url = `${this.blogListUrl}/detail/${blogItem._id}`;
-
+    const url = `${this.blogListUrl}/${blogItem._id}`;
     return this.http
       .put<BLOG_ITEM>(url, blogItem)
       .pipe(catchError(this.handleError<BLOG_ITEM>('updateBlogItem')));
   }
 
   deleteBlogItem(id: ObjectId | undefined): Observable<BLOG_ITEM> {
-    const url = `${this.blogListUrl}/detail/${id}`;
+    const url = `${this.blogListUrl}/${id}`;
 
     return this.http
       .delete<BLOG_ITEM>(url)

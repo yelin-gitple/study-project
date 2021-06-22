@@ -1,4 +1,4 @@
-import { USER, USER_ID_PW, BLOG_ITEM } from './../content';
+import { USER, USER_ID_PW, BLOG_ITEM } from '../content';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { BlogListService } from '../../service/blog-list.service';

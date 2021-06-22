@@ -2,10 +2,12 @@ const express = require("express");
 const path = require("path");
 const http = require("http");
 const cors = require("cors");
-const mongoose = require("mongoose");
+const restful = require("node-restful");
+const mongoose = restful.mongoose;
 const passport = require("passport");
+const { Schema } = mongoose;
 
-const blogRouter = require("./routes/blogList");
+
 const userRouter = require("./routes/users");
 const keywordsRouter = require("./routes/keywords");
 
@@ -37,10 +39,9 @@ app.use(passport.initialize());
 app.use(express.static(path.join(__dirname, "dist/blog-study-project")));
 
 //main routing
-app.use("/api/blogList", blogRouter);
+//app.use("/api/blogList", blogRouter);
 app.use("/api/users", userRouter);
 app.use("/api/keywords", keywordsRouter);
-
 
 // set passport module
 require("./passport/passport")(passport);
@@ -54,3 +55,20 @@ const server = http.createServer(app);
 server.listen(port, () => {
   console.log(`Running on location on port ${port}`);
 });
+
+
+/*/// blogList ///*/
+const BlogSchema = new Schema({
+  title: String,
+  body: String,
+  createdAt: Number,
+  username: String,
+  userId: String,
+  uid: String,
+});
+
+const Resource = restful
+  .model("blog", BlogSchema)
+  .methods(["get", "post", "put", "delete"]);
+
+Resource.register(app, "/api/blogList");

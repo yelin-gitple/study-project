@@ -1,4 +1,4 @@
-import { KEYWORD } from './../content';
+import { KEYWORD } from '../content';
 import { Component, OnInit } from '@angular/core';
 import { KeywordsService } from 'src/service/keywords.service';
 
