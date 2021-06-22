@@ -37,6 +37,10 @@ export class BlogDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBlogItem();
+
+    this.authService.getCurrentUser(
+      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MGNhZTYyMTNmYmEyMzU4OTdlZWUwNTIiLCJ1c2VySWQiOiJnaXRwbGUiLCJuYW1lIjoiZ2l0cGxlIGdpdHBsZSIsImlhdCI6MTYyNDM1MDQxNiwiZXhwIjoxNjI0MzU0MDE2fQ.HkR9hOKCjK6Z8B7Wtv3RuCP8dP158SVdbYpjwC-h9R0'
+    ).subscribe(result => console.log(result));
   }
 
   getBlogItem(): void {

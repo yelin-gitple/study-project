@@ -28,7 +28,7 @@ export class SignInComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    
+
   }
 
   goToHome() {
@@ -38,12 +38,13 @@ export class SignInComponent implements OnInit {
   onSubmit() {
     const { userId, password } = this.signInForm.value;
     this.authService.signIn(userId, password).subscribe((result) => {
+
       this.globalData.updatedDataSelection(result);
       localStorage.setItem('LoggedIn', 'true');
       localStorage.setItem('USER', JSON.stringify(result));
 
       if (result) this.goToHome();
-      //alert('You just logged in! 🤗');
+      alert('You just logged in! 🤗');
 
       this.authMessage = this.authService.errorMessage;
     });

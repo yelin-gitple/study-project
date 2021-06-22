@@ -18,6 +18,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.globalData.getUserData().subscribe((user) => {
+      console.log(user)
       if (user) this.userState = true;
     });
   }
