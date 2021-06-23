@@ -32,6 +32,8 @@ const getKeywords = async () => {
   const testArr = summary.nouns_and_adjactive_map.values();
   const frequency = new Map();
 
+  console.log(testArr)
+
   for (const f of testArr) {
     for (const text of f) {
       const count = frequency.get(text);
