@@ -1,0 +1,13 @@
+.updateBtn {
+  display: block;
+  width: 100px;
+  margin: 30px auto 0;
+  padding: 10px 0;
+  border-radius: 5px;
+  background-color: skyblue;
+  cursor: pointer;
+}
+
+.updateBtn:hover {
+  opacity: 0.7;
+}

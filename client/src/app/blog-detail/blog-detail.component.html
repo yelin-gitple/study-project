@@ -15,26 +15,15 @@
       </button>
     </div>
   </div>
-  <form
-    *ngIf="editing && blogItem"
-    class="editForm"
-    [formGroup]="editForm"
-    (ngSubmit)="handleUpdate($event)"
-  >
-    <label for="blogTitle">Title:</label>
-    <input
-      class="form-control"
-      type="text"
-      value="{{ blogItem?.title }}"
-      formControlName="newTitle"
-    />
-    <label for="blogTitle">Content:</label>
-    <textarea class="form-control" rows="10" formControlName="newContent">{{
-      blogItem?.body
-    }}</textarea>
-    <button type="submit" class="updateBtn">Update</button>
-  </form>
+
+  <app-blog-form
+    [editing]="editing"
+    (editingChange)="editing = $event"
+    [blogItem]="blogItem"
+  ></app-blog-form>
+
   <button class="backBtn" (click)="goToBack()">
     <i class="fa fa-chevron-left"></i>Back
   </button>
 </div>
+

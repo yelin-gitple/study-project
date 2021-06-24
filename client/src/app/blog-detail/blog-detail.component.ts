@@ -1,14 +1,10 @@
 import { USER } from '../content';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BlogListService } from '../../service/blog-list.service';
-import { AuthService } from 'src/service/auth.service';
 
 import { BLOG_ITEM } from '../content';
-import { GlobalDataService } from 'src/service/global-data.service';
-import { identity } from 'lodash';
 
 @Component({
   selector: 'app-blog-detail',
@@ -16,36 +12,32 @@ import { identity } from 'lodash';
   styleUrls: ['./blog-detail.component.css'],
 })
 export class BlogDetailComponent implements OnInit {
+  @Output() editingStatus = new EventEmitter<boolean>();
+
+
   currentUserId: boolean = false;
   blogItem: BLOG_ITEM | undefined;
   editing: boolean = false;
   paramId = this.route.snapshot.paramMap.get('id');
 
-  editForm = this.fb.group({
-    newTitle: [''],
-    newContent: [''],
-  });
-
   constructor(
     private route: ActivatedRoute,
     private blogListService: BlogListService,
-    private location: Location,
-    private fb: FormBuilder
+    private location: Location
   ) {}
 
   ngOnInit(): void {
     this.getBlogItem();
   }
 
+  ngOnChanges(){
+    console.log(this.editing)
+  }
+
   getBlogItem(): void {
     this.blogListService.getBlogItem(this.paramId).subscribe((item) => {
       this.handleUser(item.uid);
       this.blogItem = item;
-
-      this.editForm = this.fb.group({
-        newTitle: [item.title],
-        newContent: [item.body],
-      });
     });
   }
 
@@ -59,23 +51,6 @@ export class BlogDetailComponent implements OnInit {
 
   toggleEditing(): void {
     this.editing = !this.editing;
-  }
-
-  handleUpdate(e: Event) {
-    e.preventDefault();
-    this.editing = false;
-    if (this.blogItem) {
-      this.blogItem = {
-        ...this.blogItem,
-        title: this.editForm.value.newTitle,
-        body: this.editForm.value.newContent,
-      };
-
-      const OK = window.confirm('Are you sure want to update this post?');
-      if (OK) {
-        this.blogListService.updateBlogItem(this.blogItem).subscribe();
-      }
-    }
   }
 
   delete(blogItem: BLOG_ITEM | undefined) {
