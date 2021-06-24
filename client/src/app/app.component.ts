@@ -1,7 +1,5 @@
-//import { GlobalState } from './../service/global-state.service';
 import { Component } from '@angular/core';
 import { setTheme } from 'ngx-bootstrap/utils';
-import { GlobalDataService } from 'src/service/global-data.service';
 
 @Component({
   selector: 'app-root',
@@ -9,17 +7,7 @@ import { GlobalDataService } from 'src/service/global-data.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'blog-study-project';
-  userState: boolean = false;
-
-  constructor(private globalData: GlobalDataService) {
+  constructor() {
     setTheme('bs3');
-  }
-
-  ngOnInit() {
-    this.globalData.getUserData().subscribe((user) => {
-      console.log(user)
-      if (user) this.userState = true;
-    });
   }
 }

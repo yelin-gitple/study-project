@@ -3,7 +3,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { BlogListService } from '../../service/blog-list.service';
 import { Location } from '@angular/common';
-import { GlobalDataService } from 'src/service/global-data.service';
 
 @Component({
   selector: 'app-new-post',
@@ -28,13 +27,14 @@ export class NewPostComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private blogListService: BlogListService,
-    private location: Location,
-    private globalData: GlobalDataService
+    private location: Location
   ) {}
 
   ngOnInit(): void {
-    if (localStorage.getItem(USER) !== null) {
-      this.ls_user = JSON.parse(localStorage.getItem(USER) || '');
+    const ls_user = localStorage.getItem(USER);
+
+    if (ls_user !== null) {
+      this.ls_user = JSON.parse(ls_user || '');
     }
   }
 
@@ -44,8 +44,9 @@ export class NewPostComponent implements OnInit {
       alert('Please enter your post title and content!');
 
     if (title !== '' && body !== '') {
-      const OK = window.confirm('Do you want add this post?');
+      const OK = window.confirm('Do you want to add this post?');
       if (OK) {
+        //type 지정하기
         const newPostObj = {
           ...this.newPostForm.value,
           createdAt: Date.now(),

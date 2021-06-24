@@ -11,10 +11,10 @@ import { GlobalDataService } from 'src/service/global-data.service';
 })
 export class SignUpComponent implements OnInit {
   signUpForm = this.fb.group({
-    userId: ['gitple', Validators.required],
-    password: ['gitple', Validators.required],
-    firstName: ['gitple', Validators.required],
-    lastName: ['gitple'],
+    userId: ['', Validators.required],
+    password: ['', Validators.required],
+    firstName: ['', Validators.required],
+    lastName: [''],
   });
 
   authMessage: string = '';
@@ -29,6 +29,7 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {}
 
   goSignIn(): void {
+    //todo
     this.location.go('/signIn');
   }
 

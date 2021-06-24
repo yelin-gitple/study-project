@@ -15,6 +15,7 @@ import { NewPostComponent } from './new-post/new-post.component';
 
 import { GlobalDataService } from 'src/service/global-data.service';
 import { KeywordsComponent } from './keywords/keywords.component';
+import { BlogFormComponent } from './blog-form/blog-form.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { KeywordsComponent } from './keywords/keywords.component';
     BlogDetailComponent,
     NewPostComponent,
     KeywordsComponent,
+    BlogFormComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -38,6 +40,4 @@ import { KeywordsComponent } from './keywords/keywords.component';
   providers: [GlobalDataService],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-  
-}
+export class AppModule {}

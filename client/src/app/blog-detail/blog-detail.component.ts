@@ -29,18 +29,12 @@ export class BlogDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private blogListService: BlogListService,
-    private authService: AuthService,
     private location: Location,
-    private fb: FormBuilder,
-    private globalState: GlobalDataService
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.getBlogItem();
-
-    this.authService.getCurrentUser(
-      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MGNhZTYyMTNmYmEyMzU4OTdlZWUwNTIiLCJ1c2VySWQiOiJnaXRwbGUiLCJuYW1lIjoiZ2l0cGxlIGdpdHBsZSIsImlhdCI6MTYyNDM1MDQxNiwiZXhwIjoxNjI0MzU0MDE2fQ.HkR9hOKCjK6Z8B7Wtv3RuCP8dP158SVdbYpjwC-h9R0'
-    ).subscribe(result => console.log(result));
   }
 
   getBlogItem(): void {
@@ -55,6 +49,7 @@ export class BlogDetailComponent implements OnInit {
     });
   }
 
+  //check current user and blog item user
   handleUser(uid: string): void {
     const ls_currentUid = JSON.parse(localStorage.getItem(USER) || '').uid;
     if (uid === ls_currentUid) {

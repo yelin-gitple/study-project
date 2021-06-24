@@ -22,14 +22,11 @@ export class SignInComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private location: Location,
     private globalData: GlobalDataService,
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   goToHome() {
     this.router.navigateByUrl('/home');
@@ -38,13 +35,13 @@ export class SignInComponent implements OnInit {
   onSubmit() {
     const { userId, password } = this.signInForm.value;
     this.authService.signIn(userId, password).subscribe((result) => {
-
       this.globalData.updatedDataSelection(result);
-      localStorage.setItem('LoggedIn', 'true');
       localStorage.setItem('USER', JSON.stringify(result));
 
-      if (result) this.goToHome();
-      alert('You just logged in! 🤗');
+      if (result) {
+        this.goToHome();
+        alert('You just logged in! 🤗');
+      }
 
       this.authMessage = this.authService.errorMessage;
     });

@@ -8,6 +8,14 @@
   position: relative;
 }
 
+.mainTitle{
+  padding-bottom:20px;
+}
+
+.titleArea{
+  margin-bottom:30px;
+}
+
 .registerBtn {
   width: 100%;
   margin-top: 30px;

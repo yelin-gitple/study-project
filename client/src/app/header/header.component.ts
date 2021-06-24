@@ -28,14 +28,13 @@ export class HeaderComponent implements OnInit {
       this.loggedIn = true;
       this.username = ls_user.username;
     } else this.loggedIn = false;
-
   }
 
   signOut() {
     this.globalData.updatedDataSelection(null);
-    localStorage.setItem('LoggedIn', 'false');
     localStorage.setItem(USER, 'undefined');
-    alert('You just logged out! 👋');
     this.router.navigateByUrl('/signIn');
+    
+    alert('You just logged out! 👋');
   }
 }

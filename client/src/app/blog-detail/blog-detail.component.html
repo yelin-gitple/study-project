@@ -1,6 +1,5 @@
 <div class="detail">
   <div *ngIf="!editing && blogItem" class="blogItem">
-    <!-- <p class="blogId">{{ blogItem?._id }}</p> -->
     <h3>{{ blogItem?.title }}</h3>
     <p class="content">{{ blogItem?.body }}</p>
     <h4 class="username">written by {{ blogItem?.username }}</h4>
