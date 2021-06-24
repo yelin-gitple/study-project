@@ -11,22 +11,22 @@ import { USER } from '../content';
 export class HeaderComponent implements OnInit {
   title: string = 'Blog Study Project';
   loggedIn: boolean = false;
-  username: string = '';
 
   constructor(private globalData: GlobalDataService, private router: Router) {}
 
   ngOnInit(): void {
+    //console.log(this.username)
     // check user logged in
     this.globalData.getUserData().subscribe((result) => {
-      if (result) this.loggedIn = true;
-      else this.loggedIn = false;
+      if (result) {
+        this.loggedIn = true;
+      } else this.loggedIn = false;
     });
 
     // check localStorage
     let ls_user = JSON.parse(localStorage.getItem(USER) || '');
     if (ls_user) {
       this.loggedIn = true;
-      this.username = ls_user.username;
     } else this.loggedIn = false;
   }
 
@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
     this.globalData.updatedDataSelection(null);
     localStorage.setItem(USER, 'undefined');
     this.router.navigateByUrl('/signIn');
-    
+
     alert('You just logged out! 👋');
   }
 }

@@ -1,7 +1,9 @@
+import { Router } from '@angular/router';
 import { BlogListService } from './../../service/blog-list.service';
 import { FormBuilder } from '@angular/forms';
 import { BLOG_ITEM } from './../content';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-blog-form',
@@ -14,6 +16,7 @@ export class BlogFormComponent implements OnInit {
 
   @Output() editingChange = new EventEmitter<boolean>();
 
+  currentLocation!: string;
   editForm = this.fb.group({
     newTitle: [''],
     newContent: [''],
@@ -21,10 +24,13 @@ export class BlogFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private blogListService: BlogListService
+    private blogListService: BlogListService,
+    private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.currentLocation = this.router.url;
+  }
 
   ngOnChanges() {
     this.editForm = this.fb.group({
@@ -34,7 +40,7 @@ export class BlogFormComponent implements OnInit {
   }
 
   handleUpdate(e: Event) {
-    this.editingChange.emit(false)
+    this.editingChange.emit(false);
 
     e.preventDefault();
 

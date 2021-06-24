@@ -1,7 +1,6 @@
 <header id="header">
   <h1>{{ title }}</h1>
   <nav id="nav">
-    <p *ngIf="username.length" class="username">Hello {{this.username}}!</p>
     <a *ngIf="loggedIn" class="menu" routerLink="/home">Home</a>
     <a *ngIf="loggedIn" class="menu" routerLink="/keywords">Keywords</a>
     <p *ngIf="!loggedIn">

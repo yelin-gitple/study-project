@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../service/auth.service';
 import { Location } from '@angular/common';
 import { GlobalDataService } from 'src/service/global-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -22,21 +23,23 @@ export class SignUpComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private location: Location,
+    private router: Router,
     private globalState: GlobalDataService
   ) {}
 
   ngOnInit(): void {}
 
   goSignIn(): void {
-    //todo
-    this.location.go('/signIn');
+    this.router.navigateByUrl('/signIn');
   }
 
   onSubmit() {
     this.globalState.updatedDataSelection(null);
-    this.authService.signUp(this.signUpForm.value).subscribe(() => {
-      this.goSignIn();
+    this.authService.signUp(this.signUpForm.value).subscribe((result) => {
+      if(result){
+        alert(`Welcome ${result.firstName} ${result.lastName}`)
+        this.goSignIn();
+      }
 
       this.authMessage = this.authService.errorMessage;
     });

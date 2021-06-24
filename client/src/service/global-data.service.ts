@@ -6,9 +6,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class GlobalDataService {
   private dataSource = new BehaviorSubject(null);
-  //data = this.dataSource.asObservable;
-
-  constructor() {}
 
   getUserData() {
     //check logged in

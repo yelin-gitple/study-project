@@ -1,7 +1,8 @@
+import { USER } from './../content';
 import { Component, OnInit } from '@angular/core';
 import { BlogListService } from '../../service/blog-list.service';
 import { BLOG_ITEM } from '../content';
-//import { BLOG_LIST } from '../mock-contents';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog-list',
@@ -11,10 +12,17 @@ import { BLOG_ITEM } from '../content';
 export class BlogListComponent implements OnInit {
   blogList: BLOG_ITEM[] = [];
 
-  constructor(private blogListService: BlogListService) {}
+  constructor(
+    private blogListService: BlogListService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getBlogList();
+
+    if (localStorage.getItem(USER) === 'undefined') {
+      this.router.navigateByUrl("/signIn")
+    }
   }
 
   getBlogList() {
