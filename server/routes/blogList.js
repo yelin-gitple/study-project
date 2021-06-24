@@ -50,17 +50,17 @@ const BLOG = require("../models/blog");
 // });
 
 /* DELETE */
-router.delete("/detail/:id", (req, res) => {
-  try {
-    const id_obj = ObjectId(req.params.id);
-    BLOG.deleteOne({ _id: id_obj }).then((result) => {
-      res.status(200).json({
-        message: "Delete success",
-      });
-    });
-  } catch (error) {
-    res.status(204).end();
-  }
-});
+// router.delete("/detail/:id", (req, res) => {
+//   try {
+//     const id_obj = ObjectId(req.params.id);
+//     BLOG.deleteOne({ _id: id_obj }).then((result) => {
+//       res.status(200).json({
+//         message: "Delete success",
+//       });
+//     });
+//   } catch (error) {
+//     res.status(204).end();
+//   }
+// });
 
-module.exports = router;
+// module.exports = router;

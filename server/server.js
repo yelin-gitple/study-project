@@ -39,7 +39,6 @@ app.use(passport.initialize());
 app.use(express.static(path.join(__dirname, "dist/blog-study-project")));
 
 //main routing
-//app.use("/api/blogList", blogRouter);
 app.use("/api/users", userRouter);
 app.use("/api/keywords", keywordsRouter);
 
