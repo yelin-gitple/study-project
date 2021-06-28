@@ -14,7 +14,6 @@ import { BLOG_ITEM } from '../content';
 export class BlogDetailComponent implements OnInit {
   @Output() editingStatus = new EventEmitter<boolean>();
 
-
   currentUserId: boolean = false;
   blogItem: BLOG_ITEM | undefined;
   editing: boolean = false;
@@ -30,8 +29,8 @@ export class BlogDetailComponent implements OnInit {
     this.getBlogItem();
   }
 
-  ngOnChanges(){
-    console.log(this.editing)
+  ngOnChanges() {
+    console.log(this.editing);
   }
 
   getBlogItem(): void {
@@ -66,5 +65,10 @@ export class BlogDetailComponent implements OnInit {
 
   goToBack(): void {
     this.location.back();
+  }
+
+  editingDone(event: any) {
+    this.blogItem = event;
+    this.editing = false;
   }
 }

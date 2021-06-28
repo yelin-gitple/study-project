@@ -24,7 +24,12 @@ export class HeaderComponent implements OnInit {
     });
 
     // check localStorage
-    let ls_user = JSON.parse(localStorage.getItem(USER) || '');
+    let ls_user;
+    try{
+      ls_user = JSON.parse(localStorage.getItem(USER) || '');
+    }catch(e){
+      console.error("<<<<error",e)
+    }
     if (ls_user) {
       this.loggedIn = true;
     } else this.loggedIn = false;

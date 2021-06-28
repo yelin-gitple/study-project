@@ -47,7 +47,7 @@ export class NewPostComponent implements OnInit {
       const OK = window.confirm('Do you want to add this post?');
       if (OK) {
         //type 지정하기
-        const newPostObj = {
+        const newPostObj:BLOG_ITEM = {
           ...this.newPostForm.value,
           createdAt: Date.now(),
           username: this.ls_user.username,

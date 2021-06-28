@@ -18,7 +18,7 @@
 
   <app-blog-form
     [editing]="editing"
-    (editingChange)="editing = $event"
+    (editingChange)="editingDone($event)"
     [blogItem]="blogItem"
   ></app-blog-form>
 
@@ -26,4 +26,3 @@
     <i class="fa fa-chevron-left"></i>Back
   </button>
 </div>
-

@@ -7,7 +7,6 @@ const mongoose = restful.mongoose;
 const passport = require("passport");
 const { Schema } = mongoose;
 
-
 const userRouter = require("./routes/users");
 const keywordsRouter = require("./routes/keywords");
 
@@ -55,7 +54,6 @@ server.listen(port, () => {
   console.log(`Running on location on port ${port}`);
 });
 
-
 /*/// blogList ///*/
 const BlogSchema = new Schema({
   title: String,
@@ -68,6 +66,9 @@ const BlogSchema = new Schema({
 
 const Resource = restful
   .model("blog", BlogSchema)
-  .methods(["get", "post", "put", "delete"]);
+  .methods(["get", "post", "put", "delete"])
+  .after("post", (req, res, next) => {
+    console.log("🚀 ~ file: server.js ~ line 72 ~ .methods ~ req", res);
+  });
 
 Resource.register(app, "/api/blogList");
