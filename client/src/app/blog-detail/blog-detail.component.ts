@@ -12,8 +12,6 @@ import { BLOG_ITEM } from '../content';
   styleUrls: ['./blog-detail.component.css'],
 })
 export class BlogDetailComponent implements OnInit {
-  @Output() editingStatus = new EventEmitter<boolean>();
-
   currentUserId: boolean = false;
   blogItem: BLOG_ITEM | undefined;
   editing: boolean = false;
@@ -27,10 +25,6 @@ export class BlogDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBlogItem();
-  }
-
-  ngOnChanges() {
-    console.log(this.editing);
   }
 
   getBlogItem(): void {

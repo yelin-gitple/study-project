@@ -17,6 +17,7 @@
   </div>
 
   <app-blog-form
+    *ngIf="editing"
     [editing]="editing"
     (editingChange)="editingDone($event)"
     [blogItem]="blogItem"

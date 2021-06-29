@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-const USER = require("../models/user");
+const USER = require("../models/user.js");
 const jwt = require("jsonwebtoken");
-const key = require("../passport/key");
+const key = require("../passport/key.js");
 const passport = require("passport");
 
 //Get current user

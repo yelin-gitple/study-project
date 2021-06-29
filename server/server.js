@@ -66,9 +66,6 @@ const BlogSchema = new Schema({
 
 const Resource = restful
   .model("blog", BlogSchema)
-  .methods(["get", "post", "put", "delete"])
-  .after("post", (req, res, next) => {
-    console.log("🚀 ~ file: server.js ~ line 72 ~ .methods ~ req", res);
-  });
+  .methods(["get", "post", "put", "delete"]);
 
 Resource.register(app, "/api/blogList");

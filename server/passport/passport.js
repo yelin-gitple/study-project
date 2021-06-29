@@ -2,10 +2,9 @@ const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 
 const mongoose = require("mongoose");
-const USER = require("../models/user");
+const USER = require("../models/user.js");
 
 const keys = require("./key").secretOrKey;
-
 const opts = {};
 
 // deliver jwt client to server

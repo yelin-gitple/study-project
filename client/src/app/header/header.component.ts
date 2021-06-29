@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
   constructor(private globalData: GlobalDataService, private router: Router) {}
 
   ngOnInit(): void {
-    //console.log(this.username)
     // check user logged in
     this.globalData.getUserData().subscribe((result) => {
       if (result) {
@@ -23,12 +22,13 @@ export class HeaderComponent implements OnInit {
       } else this.loggedIn = false;
     });
 
+    
     // check localStorage
     let ls_user;
-    try{
-      ls_user = JSON.parse(localStorage.getItem(USER) || '');
-    }catch(e){
-      console.error("<<<<error",e)
+    try {
+      ls_user = localStorage.getItem(USER);
+    } catch (e) {
+      console.error('<<<<error', e);
     }
     if (ls_user) {
       this.loggedIn = true;

@@ -4,8 +4,6 @@ import { FormBuilder } from '@angular/forms';
 import { BLOG_ITEM, USER } from './../content';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Location } from '@angular/common';
-import { Console } from 'console';
-import { ConditionalExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-blog-form',
@@ -17,6 +15,7 @@ export class BlogFormComponent implements OnInit {
   @Input() blogItem: BLOG_ITEM | undefined;
 
   @Output() editingChange = new EventEmitter<BLOG_ITEM>();
+  @Output() addingChange = new EventEmitter<BLOG_ITEM>();
 
   currentLocation!: string;
   editForm = this.fb.group({
@@ -63,16 +62,13 @@ export class BlogFormComponent implements OnInit {
   handleSubmit(e: Event) {
     e.preventDefault();
 
-    // console.log(
-    //   '🚀 ~ file: blog-form.component.ts ~ line 70 ~ BlogFormComponent ~ handleSubmit ~ this.blogItem',
-    //   this.blogItem
-    // );
     const OK = window.confirm(
       `Are you sure want to ${
         this.currentLocation === '/newPost' ? 'register' : 'update'
       } this post?`
     );
 
+    //Edit blog post
     if (this.blogItem) {
       this.blogItem = {
         ...this.blogItem,
@@ -83,33 +79,28 @@ export class BlogFormComponent implements OnInit {
       if (OK && this.currentLocation.includes('detail')) {
         this.blogListService
           .updateBlogItem(this.blogItem)
-          .subscribe((result: any) => {
-            // console.log(this.blogItem);
-            // console.log(
-            //   '🚀 ~ file: blog-form.component.ts ~ line 61 ~ BlogFormComponent ~ .subscribe ~ result',
-            //   result
-            // );
+          .subscribe(() => {
             this.editingChange.emit(this.blogItem);
           });
         this.editing = false;
       }
     }
 
+    // Add blog post
     if (OK && this.currentLocation === '/newPost') {
+      const { newTitle, newContent } = this.editForm.value;
+      const { username, userId, uid } = this.ls_user;
+
       const newPostObj: BLOG_ITEM = {
-        ...this.editForm.value,
+        title: newTitle,
+        body: newContent,
         createdAt: Date.now(),
-        username: this.ls_user.username,
-        userId: this.ls_user.userId,
-        uid: this.ls_user.uid,
+        username,
+        userId,
+        uid,
       };
 
-      this.blogListService.addPost(newPostObj).subscribe((result) => {
-        console.log(
-          '🚀 ~ file: blog-form.component.ts ~ line 113 ~ BlogFormComponent ~ this.blogListService.addPost ~ result',
-          result
-        );
-
+      this.blogListService.addPost(newPostObj).subscribe(() => {
         this.goBack();
       });
     }
