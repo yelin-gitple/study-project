@@ -1,28 +1,6 @@
 <div class="newPost">
   <h3 class="mainTitle">Register New Post</h3>
-  <!-- <form [formGroup]="newPostForm" (ngSubmit)="onSubmit()">
-    <div class="titleArea">
-      <label for="newTitle">Title: </label>
-      <input
-        id="newTitle"
-        class="form-control"
-        type="text"
-        formControlName="title"
-      />
-    </div>
-    <div class="contentArea">
-      <label for="newContent">Content: </label>
-      <textarea
-        id="newContent"
-        class="form-control"
-        formControlName="body"
-        rows="10"
-      ></textarea>
-    </div>
-    <button class="registerBtn" >Register</button>
-  </form> -->
-  <app-blog-form ></app-blog-form>
-
+  <app-blog-form></app-blog-form>
   <button class="backBtn" (click)="goBack()">
     <i class="fa fa-chevron-left"></i>Back
   </button>

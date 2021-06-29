@@ -15,7 +15,6 @@ export class BlogFormComponent implements OnInit {
   @Input() blogItem: BLOG_ITEM | undefined;
 
   @Output() editingChange = new EventEmitter<BLOG_ITEM>();
-  @Output() addingChange = new EventEmitter<BLOG_ITEM>();
 
   currentLocation!: string;
   editForm = this.fb.group({

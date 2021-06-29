@@ -8,15 +8,16 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/signIn', pathMatch: 'full' },
-  { path: 'home', component: BlogListComponent },
+  { path: 'home', component: BlogListComponent, canActivate:[AuthGuard] },
   { path: 'signIn', component: SignInComponent },
   { path: 'signUp', component: SignUpComponent },
-  { path: 'detail/:id', component: BlogDetailComponent },
-  { path: 'newPost', component: NewPostComponent },
-  { path: 'keywords', component: KeywordsComponent },
+  { path: 'detail/:id', component: BlogDetailComponent,canActivate:[AuthGuard] },
+  { path: 'newPost', component: NewPostComponent,canActivate:[AuthGuard] },
+  { path: 'keywords', component: KeywordsComponent,canActivate:[AuthGuard] },
 ];
 
 @NgModule({

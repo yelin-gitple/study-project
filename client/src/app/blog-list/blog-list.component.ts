@@ -19,10 +19,6 @@ export class BlogListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBlogList();
-
-    if (localStorage.getItem(USER) === 'undefined') {
-      this.router.navigateByUrl("/signIn")
-    }
   }
 
   getBlogList() {

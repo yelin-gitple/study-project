@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
       } else this.loggedIn = false;
     });
 
-    
     // check localStorage
     let ls_user;
     try {
@@ -30,7 +29,8 @@ export class HeaderComponent implements OnInit {
     } catch (e) {
       console.error('<<<<error', e);
     }
-    if (ls_user) {
+
+    if (ls_user !== 'undefined') {
       this.loggedIn = true;
     } else this.loggedIn = false;
   }
